@@ -2,7 +2,7 @@
 
 ### Details: ###
 
-***All pages should be authenticated*** (i.e. you need to log in to view or edit data). 
+***All pages should be authenticated.*** (i.e. you need to log in to view or edit data). 
 Feel free to use any open-source packages to handle this.
 
 The views in the application should be created using any technology you want, Vue, React, or just plain PHP/Blade. (for simplicity, we recommend using Laravel's Blade).
@@ -20,8 +20,9 @@ Design/Styling is not an important factor in this task, but it should be functio
 ***Requests should be validated in Laravel using form requests.***
 
 ***All code must be committed to the shared GIT repository.***
+Please commit and push code as you go, so we can see your progress.
 
-Bonus points (these are all optional):
+### Bonus points (these are all optional): ###
 
 - Use Tailwind CSS for styling.
 - While product prices are stored in the database in minor units (øre), display them as Kr in the admin.
