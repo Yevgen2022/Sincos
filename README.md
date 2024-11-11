@@ -11,7 +11,8 @@ The application consists of two main entities: `Product` and `Category`. (see ex
 These must have eloquent models, and should have a defined relationship between them.
 
 Each Category has many products, and each product has only one category.
-You need to create pages to create, read, update, and delete both products and categories.
+You need to ble able to create, read, update, and delete both products and categories.
+Focus on making it as user-friendly as possible.
 
 There is no limit to how many products or categories you can have.
 
