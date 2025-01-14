@@ -14,7 +14,7 @@ Each Category has many products, and each product has only one category.
 You need to ble able to create, read, update, and delete both products and categories.
 Focus on making it as user-friendly as possible.
 
-There is no limit to how many products or categories you can have.
+There should be no limit to how many products or categories you can have.
 
 Design/Styling is not an important factor in this task, but it should be functional and easy to use.
 
