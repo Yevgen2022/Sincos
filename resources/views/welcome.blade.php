@@ -28,7 +28,13 @@
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
 
                     <main class="mt-6">
+                        <div>
                         @include('partials.nav')
+                        </div>
+                        <div>
+                            @include('partials.banner')
+                        </div>
+
                     </main>
 
                     <div class="content">
