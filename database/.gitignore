@@ -1,1 +1,29 @@
 *.sqlite*
+# Laravel & Composer
+/vendor
+/node_modules
+/.env
+/.phpunit.result.cache
+/public/storage
+/storage/*.key
+
+# Laravel Mix
+/public/hot
+/public/mix-manifest.json
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE settings
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Composer & PHP
+composer.phar
+composer.lock
+
+# Laravel Debugbar
+/debugbar
