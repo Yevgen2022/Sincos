@@ -1,0 +1,32 @@
+# Laravel specific
+/vendor
+/node_modules
+/public/storage
+/storage/*.key
+/.env
+.env.*.local
+.phpunit.result.cache
+/.vscode
+
+# Composer vendor directory
+/vendor
+
+# Node.js modules
+/node_modules/
+
+# Laravel Cache and Log files
+/storage/*
+/bootstrap/cache/*
+
+# MacOS system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
+
+# IDE-specific files
+.idea/
+
+# Laravel 8+, Breeze, and Sanctum files
+/public/hot
+/storage/app/public
