@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'email_verified_at',  // Add to $fillable
+        'remember_token',      // Add to $fillable
     ];
 
     /**

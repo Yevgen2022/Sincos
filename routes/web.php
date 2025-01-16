@@ -12,8 +12,11 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('register');
+Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('register.form');
 Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'index'])->name('login');
+Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
+Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'checkUser'])->name('login');
+
 
 Route::post('/logout', function () {
     Auth::logout();
@@ -21,4 +24,3 @@ Route::post('/logout', function () {
 })->name('logout');
 
 
-Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'checkUser'])->name('login');

@@ -83,7 +83,7 @@
 
 
                         @guest
-                            <a href="{{ route('register') }}"
+                            <a href="{{ route('register.form') }}"
                                class="hover:bg-gray-700 hover:text-gray-300 active:text-white text-white px-3 py-2 rounded-md text-sm font-medium">Register</a>
                             <a href="{{ route('login') }}"
                                class="hover:bg-gray-700 hover:text-gray-300 active:text-white text-white px-3 py-2 rounded-md text-sm font-medium">Log
