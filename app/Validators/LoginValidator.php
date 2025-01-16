@@ -23,7 +23,7 @@ class LoginValidator
             'password' => ['required', 'string'],
         ]);
 
-        // Якщо валідація не проходить
+        // If validation is false
         if ($validator->fails()) {
             throw new ValidationException($validator);
         }

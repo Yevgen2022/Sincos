@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use http\Env\Request;
+use App\Models\User;
+use App\Validators\LoginValidator;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
@@ -35,10 +38,12 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(LoginValidator $loginValidator)
     {
         $this->middleware('guest')->except('logout');
         $this->middleware('auth')->only('logout');
+
+        $this->loginValidator = $loginValidator;
     }
 
     public function index()
@@ -54,27 +59,23 @@ class LoginController extends Controller
          * were transmitted through the form, in particular email and password
          */
 
-        $validator = Validator::make($request->all(), [
-            'email' => ['required', 'email'],
-            'password' => ['required', 'string'],
-        ]);
-
-        // Error of validation
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
+        // Використовуємо наш валідатор
+        try {
+            $this->loginValidator->validate($request->all());
+        } catch (ValidationException $e) {
+            return back()->withErrors($e->validator)->withInput();
         }
 
-        // Attempt identification
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
-            return redirect()->intended('/home'); // або будь-який інший маршрут, на який ви хочете перенаправити користувача
-        }
+        // Перевірка на наявність користувача
+        $user = User::where('email', $request->email)->first();
 
-        // Error of identification
-        return redirect()->back()
-            ->withErrors(['email' => 'These credentials do not match our records.'])
-            ->withInput();
+        // Перевірка пароля
+        if ($user && Hash::check($request->password, $user->password)) {
+            Auth::login($user);
+            return redirect()->route('home');
+        } else {
+            return back()->withErrors(['email' => 'The provided credentials are incorrect.']);
+        }
     }
 
 }
