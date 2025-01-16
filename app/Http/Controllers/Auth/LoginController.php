@@ -31,7 +31,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/homeUserPage';
 
     /**
      * Create a new controller instance.
@@ -71,7 +71,7 @@ class LoginController extends Controller
         // Checking password
         if ($user && Hash::check($request->password, $user->password)) {
             Auth::login($user);
-            return redirect()->route('home');
+            return redirect()->route('homeUserPage');
         } else {
             return back()->withErrors(['email' => 'The provided credentials are incorrect.']);
         }

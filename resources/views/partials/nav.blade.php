@@ -38,16 +38,36 @@
 
                 <div class="hidden sm:ml-6 sm:block">
                     <div class="flex space-x-4">
-                        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                        <a href="#" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
-                           aria-current="page">Products</a>
+                        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white"   bg-gray-900 aria-current="page"-->
+
+
                         <a href="#"
-                           class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Category</a>
+                           class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white
+   @guest cursor-not-allowed opacity-50 @endguest @auth cursor-pointer active:text-gray-300 @endauth"
+                           @guest tabindex="-1" @endguest>Products</a>
+
                         <a href="#"
-                           class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">About</a>
+                           class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white
+   @guest cursor-not-allowed opacity-50 @endguest @auth cursor-pointer active:text-gray-300 @endauth"
+                           @guest tabindex="-1" @endguest>Category</a>
+
+
                         <a href="#"
-                           class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Contact
+                           class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white active:text-gray-300">About</a>
+
+
+                        <a href="#"
+                           class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white active:text-gray-300">Contact
                             Us</a>
+
+{{--                        <a href="#"--}}
+{{--                           class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white--}}
+{{--   @guest cursor-not-allowed opacity-50 @endguest @auth cursor-pointer active:text-gray-300 @endauth"--}}
+{{--                           @guest tabindex="-1" @endguest>--}}
+{{--                            Cheking--}}
+{{--                        </a>--}}
+
+
                     </div>
                 </div>
 
@@ -83,7 +103,7 @@
 
 
                         @guest
-                            <a href="{{ route('register.form') }}"
+                            <a href="{{ route('register') }}"
                                class="hover:bg-gray-700 hover:text-gray-300 active:text-white text-white px-3 py-2 rounded-md text-sm font-medium">Register</a>
                             <a href="{{ route('login') }}"
                                class="hover:bg-gray-700 hover:text-gray-300 active:text-white text-white px-3 py-2 rounded-md text-sm font-medium">Log
