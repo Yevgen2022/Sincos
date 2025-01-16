@@ -13,3 +13,6 @@ Auth::routes();
 
 Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('register');
 Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'index'])->name('login');
+
+Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'checkUser']);
+Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'checkUser'])->name('login');
