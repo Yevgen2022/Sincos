@@ -53,23 +53,22 @@ class LoginController extends Controller
 
     public function checkUser(Request $request)
     {
-//        $this->validate($request, [])
+
         /**
          * Validating form. $request->all() - taking all parameters which
          * were transmitted through the form, in particular email and password
          */
 
-        // Використовуємо наш валідатор
-        try {
-            $this->loginValidator->validate($request->all());
-        } catch (ValidationException $e) {
-            return back()->withErrors($e->validator)->withInput();
-        }
+        // Using validator
+         $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string',
+        ]);
 
-        // Перевірка на наявність користувача
+        // Check, the user is?
         $user = User::where('email', $request->email)->first();
 
-        // Перевірка пароля
+        // Checking password
         if ($user && Hash::check($request->password, $user->password)) {
             Auth::login($user);
             return redirect()->route('home');
