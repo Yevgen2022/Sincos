@@ -19,14 +19,14 @@
             </style>
         @endif
 
-{{--        <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
+
 
 
 
 
     </head>
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
-
+welcomeblade
                     <main class="mt-6">
                         <div>
                         @include('partials.nav')
