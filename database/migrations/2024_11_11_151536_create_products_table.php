@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->integer('price_excluding_vat_in_minor_units'); // example 1050 for 10.50
             $table->integer('vat_rate'); // example: 25 for 25%
-            $table->foreignId('category_id')->constrained();
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
