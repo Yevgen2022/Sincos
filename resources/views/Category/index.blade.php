@@ -3,7 +3,17 @@
 @section('content')
     <div class="flex items-center justify-center min-h-screen bg-gray-100">
         <div class="w-full max-w-4xl bg-white shadow-md rounded-lg p-6 mt-10">
-            <h2 class="text-2xl font-semibold text-gray-800 text-center mb-6">Categories</h2>
+
+{{--            <h2 class="text-2xl font-semibold text-gray-800 text-center mb-6">Categories</h2>--}}
+
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-semibold text-gray-800">Categories</h2>
+                <a href="{{ route('categories.showForm') }}"
+                   class="text-sm text-white bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg transition">
+                    Create Category
+                </a>
+            </div>
+
 
             <ul role="list" class="divide-y divide-gray-200 border border-gray-300 rounded-lg">
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Category;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class CategoryEditController extends Controller
 {
@@ -23,7 +24,7 @@ class CategoryEditController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function edit($id): \Illuminate\Contracts\Support\Renderable
+    public function edit($id): View
     {
 
         /**
@@ -35,7 +36,7 @@ class CategoryEditController extends Controller
          * We return the view with the transfer of category data.
          */
 
-        return view('category.edit', compact('category'));
+        return view('Category.edit', compact('category'));
     }
 
 
