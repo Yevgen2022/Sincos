@@ -23,19 +23,19 @@ class CategoryEditController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function __invoke()
+    public function edit($id): \Illuminate\Contracts\Support\Renderable
     {
 
         /**
-         * Get all categories from table categories
+         * Get category from table categories by id
          */
-        $categories = Category::all();
+        $category = Category::findOrFail($id);
 
         /**
-         * creates an array with the 'categories' key, which is available in the Blade template.
+         * We return the view with the transfer of category data.
          */
 
-        return view('Category.index', compact('categories'));
+        return view('category.edit', compact('category'));
     }
 
 
