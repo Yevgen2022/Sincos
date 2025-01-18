@@ -14,16 +14,31 @@
                             </div>
                         </div>
                         <div class="hidden sm:flex sm:flex-col sm:items-end">
-                            <p class="text-sm text-gray-500">Co-Founder / CEO</p>
-                            <p class="mt-1 text-xs text-gray-400">Last seen
-                                <time datetime="2023-01-23T13:23Z">3h ago</time>
-                            </p>
+                            <a href="{{ route('categories.edit', $category->id) }}"
+                               class="text-sm text-blue-500 hover:text-blue-700 bg-blue-100 hover:bg-blue-200 px-3 py-1 rounded-lg transition">
+                                Edit
+                            </a>
+                            <form action="{{ route('categories.delete', $category->id) }}" method="POST"
+                                  onsubmit="return confirm('Are you sure you want to delete this category?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+                                    Delete
+                                </button>
+                            </form>
                         </div>
                     </li>
                 @endforeach
             </ul>
         </div>
-    </div>
+
+
+        @if(session('success'))
+            <script>
+                alert("{{ session('success') }}");
+            </script>
+    @endif
+
 @endsection
 
 

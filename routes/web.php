@@ -15,6 +15,8 @@ Route::get('/homeUserPage', [App\Http\Controllers\HomeController::class, 'homeUs
 
 
 Route::get('/category', App\Http\Controllers\Category\CategoryIndexController::class)->name('category');
+Route::get('/category/edit', [App\Http\Controllers\Category\CategoryEditController::class,'edit'])->name('categories.edit');
+Route::delete('/category/{id}', [App\Http\Controllers\Category\CategoryDeleteController::class,'delete'])->name('categories.delete');
 
 
 
