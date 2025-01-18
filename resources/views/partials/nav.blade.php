@@ -46,7 +46,7 @@
    @guest cursor-not-allowed opacity-50 @endguest @auth cursor-pointer active:text-gray-300 @endauth"
                            @guest tabindex="-1" @endguest>Products</a>
 
-                        <a href="#"
+                        <a href="/category"
                            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white
    @guest cursor-not-allowed opacity-50 @endguest @auth cursor-pointer active:text-gray-300 @endauth"
                            @guest tabindex="-1" @endguest>Category</a>
