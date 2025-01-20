@@ -22,8 +22,8 @@ class CategoryCreateController extends Controller
             'name' => 'required|string|max:255',
         ]);
 
-        // Створення slug на основі name
-        $slug = Str::slug($validated['name']);  // Використовуємо допоміжну функцію str_slug (з Laravel 8.x може бути str()->slug())
+        // Creating a slug based on name
+        $slug = Str::slug($validated['name']);  // We use the auxiliary function str_slug (with Laravel 8.x it can be str()->slug())
 
         Category::create([
             'name' => $validated['name'],

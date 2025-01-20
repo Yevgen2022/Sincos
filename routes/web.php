@@ -21,7 +21,7 @@ Route::post('/category/create', [App\Http\Controllers\Category\CategoryCreateCon
 Route::get('/category', App\Http\Controllers\Category\CategoryIndexController::class)->name('category');
 
 
-
+Route::put('/products/store',[App\Http\Controllers\Products\ProductsStoreController::class,'store'])->name('product.store');
 Route::put('/products/{id}', [App\Http\Controllers\Products\ProductsUpdateController::class,'update'])->name('product.update');
 Route::get('/products/create', [App\Http\Controllers\Products\ProductsStoreController::class,'showCreateForm'])->name('product.showCreateForm');
 Route::get('/products/{id}', [App\Http\Controllers\Products\ProductsUpdateController::class,'showEditForm'])->name('product.showEditForm');

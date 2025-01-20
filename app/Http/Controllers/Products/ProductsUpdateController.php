@@ -25,7 +25,6 @@ class ProductsUpdateController
         $validatedData = $request->validate([
             'name' => 'required|string|max:100',
             'description' => 'required|string|max:100',
-//            'price' => 'required|numeric',
             'price' => [
                 'required',
                 'regex:/^\d+([.,]\d{1,2})?$/', // Allows numbers with comma or period, maximum 2 characters after
