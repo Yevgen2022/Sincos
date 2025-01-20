@@ -14,17 +14,33 @@
 
 
             <ul role="list" class="divide-y divide-gray-200 border border-gray-300 rounded-lg">
-
                 <li class="flex justify-between items-center gap-x-6 py-5 px-4">
                     <div class="flex min-w-0 gap-x-4">
-                        <div class="w-44 h-44 flex-none bg-gray-200 border border-gray-300">Foto of product</div>
-                        <div class="min-w-0 flex-auto">
-                            <p class="text-sm/6 font-semibold text-gray-900">Product name</p>
-                            <p class="mt-1 truncate text-xs/5 text-gray-500">Product description</p>
+                        <div class="w-44 h-44 flex-none bg-gray-200 border border-gray-300 flex items-center justify-center text-gray-500">
+                            Foto of product
                         </div>
+
+                        <div class="min-w-0 flex-auto flex flex-col justify-between gap-y-2"> <!-- We center the elements -->
+                            <!-- Product name located on top -->
+                            <p class="text-sm font-semibold text-gray-900">Product name</p>
+
+                            <!-- Product description -->
+                            <p class="truncate text-xs text-gray-500">Product description</p>
+
+                            <!-- Product price located below -->
+                            <div class="flex items-center justify-between">
+                                <p class="truncate text-xs text-gray-500 mr-16">Product price</p>
+
+                                <div class="flex gap-x-4 ml-4"> <!-- Distance between links -->
+                                    <a href="#" class="text-xs text-blue-500 hover:underline">Show Reviews</a>
+                                    <a href="#" class="text-xs text-blue-500 hover:underline">Add Reviews</a>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <div class="hidden sm:flex sm:flex-col sm:items-end gap-4"> <!-- Додаємо gap для відстані між елементами -->
+                    <div class="hidden sm:flex sm:flex-col sm:items-end gap-4"> <!-- Distance between buttons -->
                         <a href="#"
                            class="text-sm text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg w-full text-center transition">
                             Edit
