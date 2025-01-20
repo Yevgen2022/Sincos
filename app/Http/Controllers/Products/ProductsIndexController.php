@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Products;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductsIndexController extends Controller
@@ -29,7 +30,7 @@ class ProductsIndexController extends Controller
         /**
          * Get all categories from table categories
          */
-        $products = Category::all();
+        $products = Product::first();
 
         /**
          * creates an array with the 'categories' key, which is available in the Blade template.

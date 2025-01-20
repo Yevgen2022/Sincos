@@ -24,6 +24,12 @@ class Product extends Model
      */
     public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Category::class); // Продукт належить певній категорії
+        return $this->belongsTo(Category::class); // The product belongs to a certain category
     }
+    public function formattedPrice(): string
+    {
+
+        return number_format($this->price_excluding_vat_in_minor_units / 100, 2, ',', ' ');
+    }
+
 }

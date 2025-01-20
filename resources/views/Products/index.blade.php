@@ -22,14 +22,14 @@
 
                         <div class="min-w-0 flex-auto flex flex-col justify-between gap-y-2"> <!-- We center the elements -->
                             <!-- Product name located on top -->
-                            <p class="text-sm font-semibold text-gray-900">Product name</p>
+                            <p class="text-sm font-semibold text-gray-900">{{ $products->name }}</p>
 
                             <!-- Product description -->
-                            <p class="truncate text-xs text-gray-500">Product description</p>
+                            <p class="truncate text-xs text-gray-500 italic">{{ $products->description }}</p>
 
                             <!-- Product price located below -->
                             <div class="flex items-center justify-between">
-                                <p class="truncate text-xs text-gray-500 mr-16">Product price</p>
+                                <p class="truncate text-xs text-gray-500 mr-16">{{ $products->formattedPrice()  . ' ' .'kr' }}</p>
 
                                 <div class="flex gap-x-4 ml-4"> <!-- Distance between links -->
                                     <a href="#" class="text-xs text-blue-500 hover:underline">Show Reviews</a>
