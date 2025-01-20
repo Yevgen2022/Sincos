@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="flex items-start justify-center min-h-screen bg-gray-100">
         <div class="w-full max-w-4xl bg-white shadow-md rounded-lg p-6 mt-10">
 
             <div class="flex justify-between items-center mb-6">
@@ -22,6 +22,7 @@
                                 <p class="truncate text-sm text-gray-700 font-medium">{{ $category->name }}</p>
                             </div>
                         </div>
+
                         <div class="hidden sm:flex sm:flex-col sm:items-end gap-4"> <!-- Додаємо gap для відстані між елементами -->
                             <a href="{{ route('categories.edit', $category->id) }}"
                                class="text-sm text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg w-full text-center transition">
