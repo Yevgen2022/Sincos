@@ -22,7 +22,8 @@ Route::get('/category', App\Http\Controllers\Category\CategoryIndexController::c
 
 
 
-Route::get('/products/{id}', [App\Http\Controllers\Products\ProductsEditController::class,'showEditForm'])->name('product.showEditForm');
+Route::put('/products/{id}', [App\Http\Controllers\Products\ProductsUpdateController::class,'update'])->name('product.update');
+Route::get('/products/{id}', [App\Http\Controllers\Products\ProductsUpdateController::class,'showEditForm'])->name('product.showEditForm');
 Route::delete('/products/{id}', [App\Http\Controllers\Products\ProductsDeleteController::class,'delete'])->name('product.delete');
 Route::get('/products', App\Http\Controllers\Products\ProductsIndexController::class)->name('products');
 
