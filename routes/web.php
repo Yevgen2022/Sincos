@@ -21,6 +21,12 @@ Route::post('/category/create', [App\Http\Controllers\Category\CategoryCreateCon
 Route::get('/category', App\Http\Controllers\Category\CategoryIndexController::class)->name('category');
 
 
+
+Route::get('/products', App\Http\Controllers\Products\ProductsIndexController::class)->name('products');
+
+
+
+
 //Route::prefix('categories')->group(function () {
 //    Route::get('/', CategoryIndexController::class)->name('categories.index');
 //    Route::get('/create', CategoryCreateController::class)->name('categories.create');
