@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/*!* Стиль для активної сторінки пагінації *!*/
+/*.pagination .page-item.active .page-link {*/
+/*    background-color: #3b82f6; !* Синій фон для активної сторінки *!*/
+/*    color: white; !* Білий текст для активної сторінки *!*/
+/*    border-color: #3b82f6; !* Синій бордер для активної сторінки *!*/
+/*}*/
+
+/*!* Стилі для всіх кнопок пагінації *!*/
+/*.pagination .page-item .page-link {*/
+/*    padding: 0.5rem 1rem; !* Відступи для квадратиків пагінації *!*/
+/*    border: 1px solid #ddd; !* Легкий бордер навколо кожного квадратика *!*/
+/*    border-radius: 0.375rem; !* Заокруглені кути *!*/
+/*    background-color: #f9fafb; !* Світлий фон для квадратиків *!*/
+/*    color: #4b5563; !* Сірий текст *!*/
+/*    transition: background-color 0.3s ease, border-color 0.3s ease; !* Плавні зміни кольору *!*/
+/*}*/
+
+/*!* Коли користувач наводить курсор на квадратик *!*/
+/*.pagination .page-item .page-link:hover {*/
+/*    background-color: #e5e7eb; !* Змінюється фон при наведенні *!*/
+/*    border-color: #d1d5db; !* Змінюється колір бордера *!*/
+/*}*/
+
+/*!* Для кнопок "Next" і "Previous" *!*/
+/*.pagination .page-item.disabled .page-link {*/
+/*    background-color: #f3f4f6; !* Світло-сірий фон для заблокованих кнопок *!*/
+/*    color: #d1d5db; !* Світло-сірий текст для заблокованих кнопок *!*/
+/*    pointer-events: none; !* Забороняємо взаємодію з кнопками *!*/
+/*}*/
+

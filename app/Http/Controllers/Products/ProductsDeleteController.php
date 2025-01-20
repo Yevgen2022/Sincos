@@ -7,7 +7,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
-class ProductsIndexController extends Controller
+class ProductsDeleteController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -24,19 +24,18 @@ class ProductsIndexController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function __invoke()
+    public function delete(int $id): \Illuminate\Http\RedirectResponse
     {
 
-        /**
-         * Get all categories from table categories
-         */
-        $products = Product::paginate(5);
+        $product = Product::findOrFail($id);
 
-        /**
-         * creates an array with the 'categories' key, which is available in the Blade template.
-         */
+        if ($product) {
+            $product->delete();
+            return redirect()->route('products')->with('success', 'Product deleted successfully!');
+        }
 
-        return view('Products.index', compact('products'));
+        return redirect()->route('products')->with('error', 'Product not found!');;
+
     }
 
 
