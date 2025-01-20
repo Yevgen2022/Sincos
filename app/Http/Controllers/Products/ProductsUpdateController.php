@@ -25,7 +25,15 @@ class ProductsUpdateController
         $validatedData = $request->validate([
             'name' => 'required|string|max:100',
             'description' => 'required|string|max:100',
-            'price' => 'required|numeric',
+//            'price' => 'required|numeric',
+            'price' => [
+                'required',
+                'regex:/^\d+([.,]\d{1,2})?$/', // Allows numbers with comma or period, maximum 2 characters after
+            ],
+        ], [
+            'description.required' => 'The product description is required.',
+            'description.max' => 'The product description must not exceed 100 characters.',
+            'price.regex' => 'The price must be a valid number with up to two decimal places.',
         ]);
 
         // Оновлення продукту
@@ -36,7 +44,6 @@ class ProductsUpdateController
 
         return redirect()->route('products')->with('success', 'Product updated successfully!');
     }
-
 
 
 }

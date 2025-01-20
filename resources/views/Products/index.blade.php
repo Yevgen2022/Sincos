@@ -6,7 +6,7 @@
 
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-2xl font-semibold text-gray-800">Products</h2>
-                <a href="#"
+                <a href="{{ route('product.showCreateForm') }}"
                    class="text-sm text-white bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg transition">
                     Create Product
                 </a>

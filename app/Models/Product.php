@@ -31,17 +31,19 @@ class Product extends Model
 
         return number_format($this->price_excluding_vat_in_minor_units / 100, 2, ',', ' ');
     }
+
+
     public function setFormattedPrice(string $priceFromForm): void
     {
         // Видалення пробілів і заміна коми на точку для правильної конвертації
         $price = str_replace(' ', '', $priceFromForm); // видаляємо пробіли
         $price = str_replace(',', '.', $price); // заміняємо кому на точку
 
-//        if (!is_numeric($price)) {
-//            throw new InvalidArgumentException('Ціна має бути числом у форматі "1234.56" або "1234,56".');
-//        }
 
-
+// Перевірка формату ціни (завжди з двома знаками після крапки)
+        if (!preg_match('/^\d+(\.\d{1,2})?$/', $price)) {
+            throw new \InvalidArgumentException('Invalid price format. It must have up to two decimal places.');
+        }
 
         // Перетворення ціни в мінорні одиниці (наприклад, копійки)
         $this->price_excluding_vat_in_minor_units = (int) round((float) $price * 100);
