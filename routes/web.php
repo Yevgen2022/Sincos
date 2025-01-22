@@ -34,6 +34,9 @@ Route::get('/products', App\Http\Controllers\Products\ProductsIndexController::c
     Route::get('/admin', [AdminIndexController::class, 'index'])->name('admin.dashboard');
 //});
 
+Route::get('/productUser', [App\Http\Controllers\ProductsForUser\ProductsUserIndexController::class, 'index'])->name('productUser.index');
+
+
 
 //Route::prefix('categories')->group(function () {
 //    Route::get('/', CategoryIndexController::class)->name('categories.index');

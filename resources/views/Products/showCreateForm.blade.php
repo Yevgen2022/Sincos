@@ -20,6 +20,23 @@
                 </div>
 
                 <div class="mb-4">
+                    <label for="product_category" class="block text-sm font-medium text-gray-700">Product Category</label>
+                    <select id="product_category" name="category"
+                            class="mt-1 p-3 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        <option value="" disabled {{ old('category') ? '' : 'selected' }}>Select a category</option>
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}" {{ old('category') == $category->id ? 'selected' : '' }}>
+                                {{ $category->name }} <!-- Виводимо назву категорії -->
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('category')
+                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
+
+                <div class="mb-4">
                     <label for="product_description" class="block text-sm font-medium text-gray-700">Product Description</label>
                     <textarea id="product_description" name="description"
                               class="mt-1 p-3 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">{{ old('description') }}</textarea>
