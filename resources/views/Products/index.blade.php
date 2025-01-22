@@ -1,4 +1,5 @@
-@extends('layouts.app')
+{{--@extends('layouts.app')--}}
+@extends('admin.index')
 
 @section('content')
     <div class="flex items-start justify-center min-h-screen bg-gray-100">

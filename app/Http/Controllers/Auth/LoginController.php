@@ -77,6 +77,7 @@ class LoginController extends Controller
             // Перевірка ролі
             if ($user->role === 'admin') {
                 return redirect()->route('admin.dashboard'); // Перенаправлення для адміністратора
+
             }
 
             // Перенаправлення для звичайного користувача

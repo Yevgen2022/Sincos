@@ -17,19 +17,26 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 
-
 </head>
 <body>
-    <div id="app">
-        <div>
-            @include('partials.nav')
-        </div>
-        <div>
-            @include('partials.banner')
-        </div>
-        <main class="py-4">
-            @yield('content')
-        </main>
+<div id="app">
+    <div>
+        @include('partials.nav')
     </div>
+    <div>
+        @include('partials.banner')
+    </div>
+
+{{--    @auth--}}
+{{--        @if(auth()->user()->role === 'admin')--}}
+{{--            <!-- Перевіряємо роль користувача -->--}}
+{{--            @include('partials.Admin.admin') <!-- Відображаємо бічну панель, якщо користувач - адмін -->--}}
+{{--        @endif--}}
+{{--    @endauth--}}
+
+    <main class="py-4">
+        @yield('content')
+    </main>
+</div>
 </body>
 </html>
