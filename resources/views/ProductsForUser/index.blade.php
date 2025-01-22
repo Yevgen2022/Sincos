@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-white border  mx-5">
+    <div class="bg-white border mx-12">
         <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
             <h2 class="text-2xl font-bold tracking-tight text-gray-900">Our Products</h2>
 

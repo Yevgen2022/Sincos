@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-white py-10">
+    <div class="bg-white border mx-12 py-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <h1 class="text-2xl font-bold text-gray-900 mb-6">Categories</h1>
 
