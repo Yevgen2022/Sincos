@@ -51,7 +51,8 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function checkUser(Request $request)
+//    public function checkUser(Request $request)
+    public function authenticated(Request $request)
     {
 
         /**
@@ -59,22 +60,30 @@ class LoginController extends Controller
          * were transmitted through the form, in particular email and password
          */
 
-        // Using validator
-         $request->validate([
+        // Валідація форми
+        $request->validate([
             'email' => 'required|email',
             'password' => 'required|string',
         ]);
 
-        // Check, the user is?
+        // Знаходимо користувача за email
         $user = User::where('email', $request->email)->first();
 
-        // Checking password
+        // Перевіряємо існування користувача та правильність пароля
         if ($user && Hash::check($request->password, $user->password)) {
+            // Аутентифікуємо користувача
             Auth::login($user);
-            return redirect()->route('homeUserPage');
-        } else {
-            return back()->withErrors(['email' => 'The provided credentials are incorrect.']);
-        }
-    }
 
+            // Перевірка ролі
+            if ($user->role === 'admin') {
+                return redirect()->route('admin.dashboard'); // Перенаправлення для адміністратора
+            }
+
+            // Перенаправлення для звичайного користувача
+            return redirect()->route('homeUserPage');
+        }
+
+        // Якщо аутентифікація не вдалася
+        return back()->withErrors(['email' => 'The provided credentials are incorrect.']);
+    }
 }
