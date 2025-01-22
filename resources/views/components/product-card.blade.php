@@ -19,7 +19,7 @@
 
                     <div class="absolute inset-x-0 top-0 flex h-72 items-end justify-end overflow-hidden rounded-lg p-4">
                         <div aria-hidden="true" class="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-black opacity-50"></div>
-                        <p class="relative text-lg font-semibold text-white">{{ $product->formattedPrice() }}</p>
+                        <p class="relative text-lg font-bold text-indigo-600">{{ $product->formattedPrice() }}</p>
                     </div>
                 </div>
 
