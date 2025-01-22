@@ -8,7 +8,9 @@ use App\Models\Product;
 class ProductsUserIndexController extends Controller
 {
 public function index(){
-    return view('ProductsForUser.index');
+    $products = Product::paginate(12);
+
+    return view('ProductsForUser.index', compact('products'));
 }
 
 }
