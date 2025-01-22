@@ -14,13 +14,17 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         // Create one standard user
-//        User::factory()->create([
-//            'name' => 'Admin', // Standard name
-//            'email' => 'admin@example.com', // Standard email
-//            'password' => bcrypt('password'), // Standard пароль
-//        ]);
+        User::factory()->create([
+            'name' => 'Admin', // Standard name
+            'email' => 'admin@example.com', // Standard email
+            'password' => bcrypt('password'), // Standard пароль
+            'role' => 'admin',
+        ]);
 
         // 10 random users
         User::factory(10)->create();
+
+
+
     }
 }
