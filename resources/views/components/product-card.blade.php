@@ -14,7 +14,7 @@
 
                     <div class="relative mt-4">
                         <h3 class="text-lg font-medium text-gray-900">{{ $product->name }}</h3>
-                        <p class="mt-1 text-sm text-gray-500 italic line-clamp-2 h-12">{{ $product->description }}</p>
+                        <p class="mt-1 text-sm text-gray-500 italic line-clamp-2 h-11">{{ $product->description }}</p>
                     </div>
 
                     <div class="absolute inset-x-0 top-0 flex h-72 items-end justify-end overflow-hidden rounded-lg p-4">
