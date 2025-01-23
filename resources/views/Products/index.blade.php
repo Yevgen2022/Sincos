@@ -1,7 +1,7 @@
 {{--@extends('layouts.app')--}}
 @extends('admin.index')
 
-@section('content')
+@section('adminContent')
     <div class="flex items-start justify-center min-h-screen bg-gray-100">
         <div class="w-full max-w-4xl bg-white shadow-md rounded-lg p-6 mt-10">
 
