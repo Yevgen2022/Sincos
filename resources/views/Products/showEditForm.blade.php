@@ -19,8 +19,34 @@
                     @enderror
                 </div>
 
+
                 <div class="mb-4">
-                    <label for="product_description" class="block text-sm font-medium text-gray-700">Product Description</label>
+                    <label for="product_category" class="block text-sm font-medium text-gray-700">Product
+                        Category</label>
+                    <select id="product_category" name="category"
+                            class="mt-1 p-3 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+
+                        <!-- Placeholder, якщо категорія не вибрана -->
+                        <option value="{{ $product->category_id }}">
+                            {{  $currentCategoryName }}
+                        </option>
+
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}" {{ old('category') == $category->id ? 'selected' : '' }}>
+                                {{ $category->name }} <!-- Виводимо назву категорії -->
+                            </option>
+                        @endforeach
+                    </select>
+
+                    @error('category')
+                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
+
+                <div class="mb-4">
+                    <label for="product_description" class="block text-sm font-medium text-gray-700">Product
+                        Description</label>
                     <textarea id="product_description" name="description"
                               class="mt-1 p-3 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">{{ old('description', $product->description) }}</textarea>
                     @error('description')
@@ -30,7 +56,8 @@
 
                 <div class="mb-4">
                     <label for="product_price" class="block text-sm font-medium text-gray-700">Product Price</label>
-                    <input type="text" id="product_price" name="price" value="{{ old('price', $product->formattedPrice()) }}"
+                    <input type="text" id="product_price" name="price"
+                           value="{{ old('price', $product->formattedPrice()) }}"
                            class="mt-1 p-3 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                     @error('price')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
@@ -51,10 +78,10 @@
     </div>
 
 
-{{--    @if(session('success'))--}}
-{{--        <script>--}}
-{{--            alert("{{ session('success') }}");--}}
-{{--        </script>--}}
-{{--    @endif--}}
+    {{--    @if(session('success'))--}}
+    {{--        <script>--}}
+    {{--            alert("{{ session('success') }}");--}}
+    {{--        </script>--}}
+    {{--    @endif--}}
 
 @endsection

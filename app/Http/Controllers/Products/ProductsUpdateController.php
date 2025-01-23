@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Products;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -11,9 +12,12 @@ class ProductsUpdateController
 
     public function showEditForm($id)
     {
-
+        $categories = Category::all();
         $product = Product::findOrFail($id);
-        return view('products.showEditForm', compact('product'));
+
+        $currentCategoryName = Category::findOrFail($product->category_id)->name;
+
+        return view('products.showEditForm', compact('product', 'categories', 'currentCategoryName'));
 
     }
 
@@ -25,6 +29,7 @@ class ProductsUpdateController
         $validatedData = $request->validate([
             'name' => 'required|string|max:100',
             'description' => 'required|string|max:100',
+            'category' => 'required|string|max:100',
             'price' => [
                 'required',
                 'regex:/^\d+([.,]\d{1,2})?$/', // Allows numbers with comma or period, maximum 2 characters after
@@ -39,6 +44,7 @@ class ProductsUpdateController
         $product->name = $validatedData['name'];
         $product->description = $validatedData['description'];
         $product->setFormattedPrice($validatedData['price']);
+        $product->category_id = $validatedData['category'];
         $product->save();
 
         return redirect()->route('products')->with('success', 'Product updated successfully!');
