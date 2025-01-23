@@ -19,7 +19,8 @@
                 <li class="flex justify-between items-center gap-x-6 py-5 px-4">
                     <div class="flex min-w-0 gap-x-4">
                         <div class="w-44 h-44 flex-none bg-gray-200 border border-gray-300 flex items-center justify-center text-gray-500">
-                            Foto of product
+{{--                            Foto of product--}}
+                            <img src = {{ $product->img_src }} alt="{{ $product->name }}" class="w-full h-full object-cover">
                         </div>
 
                         <div class="min-w-0 flex-auto flex flex-col justify-between gap-y-2"> <!-- We center the elements -->
