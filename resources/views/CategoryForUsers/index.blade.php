@@ -19,7 +19,6 @@
                             </option>
                         @endforeach
                     </select>
-{{--                    <button type="submit" class="mt-2 px-4 py-2 bg-indigo-600 text-white rounded-md shadow">Filter</button>--}}
                 </form>
             </div>
 
@@ -27,11 +26,12 @@
             <div id="category-content" class="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-3 xl:gap-x-8">
                 @if(count($products) > 0)
                     @foreach($products as $product)
-                        <div class="border rounded-lg shadow p-4">
-                            <h3 class="text-lg font-medium text-gray-900">{{ $product->name }}</h3>
-                            <p class="text-sm text-gray-500">{{ $product->description }}</p>
-                            <p class="mt-2 text-lg font-bold text-indigo-600">{{ $product->formattedPrice() }}</p>
-                        </div>
+                        @include('components.product-card', ['product' => $product])
+{{--                        <div class="border rounded-lg shadow p-4">--}}
+{{--                            <h3 class="text-lg font-medium text-gray-900">{{ $product->name }}</h3>--}}
+{{--                            <p class="text-sm text-gray-500">{{ $product->description }}</p>--}}
+{{--                            <p class="mt-2 text-lg font-bold text-indigo-600">{{ $product->formattedPrice() }}</p>--}}
+{{--                        </div>--}}
                     @endforeach
                 @else
                     <p class="text-gray-500">No products available for this category.</p>

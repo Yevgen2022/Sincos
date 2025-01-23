@@ -26,7 +26,7 @@ class CategoryUsersIndexController extends Controller
         // Перевірити, чи переданий categoryId
         $categoryId = $request->get('categoryId');
         if (!$categoryId) {
-            return redirect()->route('CategoryForUsers.index')->with('error', 'Category have not chosen.');
+            return redirect()->route('categoryforusers.index')->with('error', 'Category have not chosen.');
         }
 
         // Отримати всі категорії
