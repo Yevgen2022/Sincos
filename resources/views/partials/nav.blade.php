@@ -126,6 +126,18 @@
                         </div>
                     @endauth
 
+                    @auth
+                        @if(auth()->user()->role === 'admin')
+                            <div class="ml-3">
+                                <form method="GET" action="{{ route('admin.dashboard') }}">
+                                    @csrf
+                                    <button class="text-white">Dashboard</button>
+                                </form>
+                            </div>
+                        @endif
+                    @endauth
+
+
                 </div>
             </div>
         </div>
