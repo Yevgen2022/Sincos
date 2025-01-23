@@ -16,12 +16,13 @@ class DatabaseSeeder extends Seeder
 
     {
 
-        $this->call(CategorySeeder::class);     //Create database with seeder
+       // $this->call(CategorySeeder::class);     //Create database with seeder
 
-       // User::factory(20)->create();          //Create database with factory
-        $this->call(UserSeeder::class);
+                  // User::factory(20)->create();          //Create database with factory
+       // $this->call(UserSeeder::class);
 
-        Product::factory(50)->create();       //Create database with factory
+        $this->call(ProductsSeeder::class);
+                 // Product::factory(50)->create();       //Create database with factory
 
     }
 }
