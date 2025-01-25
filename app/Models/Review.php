@@ -17,6 +17,7 @@ class Review extends Model
         'user_id',
         'product_id',
         'review',
+        'user_rating', //user evaluation of the product
         'created_at',
         'updated_at',
 
