@@ -17,6 +17,7 @@ class Product extends Model
         'price_excluding_vat_in_minor_units',
         'vat_rate',
         'img_src',
+        'rating',
         'category_id',
     ];
 

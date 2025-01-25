@@ -27,6 +27,7 @@ class ProductFactory extends Factory
             'description' => $this->faker->sentence,
             'price_excluding_vat_in_minor_units' => $this->faker->numberBetween(1000, 100000), // Example price from 10 to 1000
             'vat_rate' => $this->faker->randomElement([5, 10, 20]), // Incidental VAT
+            'rating' => $this->faker->numberBetween(1,5),
             'category_id' => Category::inRandomOrder()->first()->id, // Random category
         ];
     }

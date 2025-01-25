@@ -29,6 +29,7 @@ class ProductsSeeder extends Seeder
                 'description' => $product->description,
 //                'img_src' => $product->images[0],
                 'img_src' => $product->thumbnail,
+                'rating' => rand(1,5),
                 'vat_rate' => rand(5, 25),
                 'category_id' => rand(1,24), // Викликаємо метод через $this
 
