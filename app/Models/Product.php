@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 
 class Product extends Model
 {
-    use HasFactory,Notifiable, SoftDeletes;
+    use HasFactory,Notifiable; //SoftDeletes
     protected $fillable = [
         'name',
         'slug',

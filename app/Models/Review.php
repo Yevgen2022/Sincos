@@ -10,7 +10,7 @@ use Illuminate\Notifications\Notifiable;
 class Review extends Model
 {
 
-    use HasFactory, Notifiable, SoftDeletes;
+    use HasFactory, Notifiable; //SoftDeletes;
 
     protected $fillable = [
 
