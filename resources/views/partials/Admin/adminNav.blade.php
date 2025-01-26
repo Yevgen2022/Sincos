@@ -45,7 +45,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a href="{{route('admin.user')}}"
                                class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-400 hover:bg-gray-800 hover:text-white">
                                 <svg class="size-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                      stroke="currentColor" aria-hidden="true" data-slot="icon">
