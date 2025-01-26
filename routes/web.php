@@ -2,6 +2,7 @@
 
 //use App\Http\Controllers\CategoryIndexController;
 use App\Http\Controllers\Admin\AdminIndexController;
+use App\Http\Controllers\User\AdminUserDeleteController;
 use App\Http\Controllers\User\AdminUserIndexController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,7 @@ Route::get('/products', App\Http\Controllers\Products\ProductsIndexController::c
 //Route::middleware(['auth', 'admin'])->group(function () {
 Route::get('/admin', [AdminIndexController::class, 'index'])->name('admin.dashboard');
 Route::get('/admin/user', [AdminUserIndexController::class, 'index'])->name('admin.user');
+Route::delete('/admin/{id}', [AdminUserDeleteController::class, 'destroy'])->name('user.destroy');
 //});
 
 Route::get('/productUser', [App\Http\Controllers\ProductsForUser\ProductsUserIndexController::class, 'index'])->name('productUser.index');
