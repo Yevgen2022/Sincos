@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('admin.index')
+@section('adminContent')
 
-@section('content')
     <div class="flex items-start justify-center min-h-screen bg-gray-100">
         <div class="w-full max-w-4xl bg-white shadow-md rounded-lg p-6 mt-10">
             <h2 class="text-2xl font-semibold text-gray-800 text-center mb-6">Create Category</h2>

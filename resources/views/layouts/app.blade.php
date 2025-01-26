@@ -38,5 +38,6 @@
         @yield('content')
     </main>
 </div>
+@yield('scripts') <!-- Вставляємо скрипти сюди -->
 </body>
 </html>

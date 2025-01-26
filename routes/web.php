@@ -4,6 +4,8 @@
 use App\Http\Controllers\Admin\AdminIndexController;
 use App\Http\Controllers\User\AdminUserDeleteController;
 use App\Http\Controllers\User\AdminUserIndexController;
+use App\Http\Controllers\User\AdminUserStoreController;
+use App\Http\Controllers\User\AdminUserUpdateController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -33,9 +35,12 @@ Route::get('/products', App\Http\Controllers\Products\ProductsIndexController::c
 
 
 //Route::middleware(['auth', 'admin'])->group(function () {
-Route::get('/admin', [AdminIndexController::class, 'index'])->name('admin.dashboard');
-Route::get('/admin/user', [AdminUserIndexController::class, 'index'])->name('admin.user');
-Route::delete('/admin/{id}', [AdminUserDeleteController::class, 'destroy'])->name('user.destroy');
+Route::get('/admin/update/{id}', [App\Http\Controllers\User\AdminUserUpdateController::class, 'showEditForm'])->name('user.showEditForm');
+Route::get('/admin/user', [App\Http\Controllers\User\AdminUserIndexController::class, 'index'])->name('admin.user');
+Route::delete('/admin/{id}', [App\Http\Controllers\User\AdminUserDeleteController::class, 'destroy'])->name('user.destroy');
+Route::get('/admin/store', [App\Http\Controllers\User\AdminUserStoreController::class, 'showCreateForm'])->name('user.showCreateForm');
+Route::post('/admin/store', [App\Http\Controllers\User\AdminUserStoreController::class, 'store'])->name('user.store');
+Route::get('/admin', [App\Http\Controllers\Admin\AdminIndexController::class, 'index'])->name('admin.dashboard');
 //});
 
 Route::get('/productUser', [App\Http\Controllers\ProductsForUser\ProductsUserIndexController::class, 'index'])->name('productUser.index');
