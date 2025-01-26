@@ -26,6 +26,7 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
+            'job' => $this->faker->jobTitle(), // Fake value for field job
             'email_verified_at' => now(),         //I written
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),   //I written
