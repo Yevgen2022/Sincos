@@ -1,11 +1,6 @@
 <?php
 
-//use App\Http\Controllers\CategoryIndexController;
-use App\Http\Controllers\Admin\AdminIndexController;
-use App\Http\Controllers\User\AdminUserDeleteController;
-use App\Http\Controllers\User\AdminUserIndexController;
-use App\Http\Controllers\User\AdminUserStoreController;
-use App\Http\Controllers\User\AdminUserUpdateController;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
