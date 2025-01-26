@@ -35,6 +35,7 @@ Route::get('/products', App\Http\Controllers\Products\ProductsIndexController::c
 
 
 //Route::middleware(['auth', 'admin'])->group(function () {
+Route::put('/admin/update/{id}', [App\Http\Controllers\User\AdminUserUpdateController::class, 'update'])->name('user.update');
 Route::get('/admin/update/{id}', [App\Http\Controllers\User\AdminUserUpdateController::class, 'showEditForm'])->name('user.showEditForm');
 Route::get('/admin/user', [App\Http\Controllers\User\AdminUserIndexController::class, 'index'])->name('admin.user');
 Route::delete('/admin/{id}', [App\Http\Controllers\User\AdminUserDeleteController::class, 'destroy'])->name('user.destroy');
