@@ -32,9 +32,15 @@
 
             <div class="mt-6">
                 <a href="#" class="relative flex items-center justify-center rounded-md border border-transparent bg-gray-300 px-8 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200
-                    @guest cursor-not-allowed opacity-50 @endguest @auth cursor-pointer active:text-gray-900 active:bg-gray-300 @endauth">Add
-                    to bag<span class="sr-only">, Zip Tote Basket</span></a>
+                    @guest cursor-not-allowed opacity-50 @endguest @auth cursor-pointer active:text-gray-900 active:bg-gray-300 @endauth">Add to bag</a>
             </div>
+
+            <div class="mt-6">
+                <a href="{{ route('carddetail', $product->id)  }}" class="relative flex items-center justify-center  px-8 py-2 text-sm font-medium text-blue-900 hover:text-blue-300 active:text-blue-900
+                @guest cursor-not-allowed opacity-50 @endguest @auth cursor-pointer active:text-blue-900 @endauth">Show more...</a>
+            </div>
+
+
         </div>
     </div>
 </div>

@@ -43,8 +43,7 @@ Route::get('/productUser', [App\Http\Controllers\ProductsForUser\ProductsUserInd
 Route::get('/categoryUser', [App\Http\Controllers\CategoryForUser\CategoryUsersIndexController::class, 'index'])->name('categoryforusers.index');
 Route::get('/categoryUser/filter', [App\Http\Controllers\CategoryForUser\CategoryUsersIndexController::class, 'filter'])->name('categoryforusers.filter');
 
-
-
+Route::get('/carddetail/{id}', [App\Http\Controllers\CardDetail\CardDetailIndexController::class, '__invoke'])->name('carddetail');
 
 //Route::prefix('categories')->group(function () {
 //    Route::get('/', CategoryIndexController::class)->name('categories.index');
