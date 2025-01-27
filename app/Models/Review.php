@@ -10,7 +10,9 @@ use Illuminate\Notifications\Notifiable;
 class Review extends Model
 {
 
-    use HasFactory, Notifiable; //SoftDeletes;
+    use HasFactory, Notifiable;
+
+    //SoftDeletes;
 
     protected $fillable = [
 
@@ -33,6 +35,18 @@ class Review extends Model
 
         return $this->belongsTo(Product::class);
 
+    }
+
+// Додаємо метод для отримання кількості відгуків для продукту
+    public static function countReviewsForProduct($productId)
+    {
+        return self::where('product_id', $productId)->count();
+    }
+
+// Метод для отримання середнього рейтингу для продукту
+    public static function averageRatingForProduct($productId)
+    {
+        return self::where('product_id', $productId)->avg('user_rating');
     }
 
 
