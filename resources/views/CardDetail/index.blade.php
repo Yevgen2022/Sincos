@@ -121,22 +121,16 @@
 {{--                                </a>--}}
 {{--                            </div>--}}
                         </form>
+
+                        <div class="mt-16">
+                            <a href="#" class="text-indigo-600 hover:text-blue-300 active:text-indigo-600">Show reviews ...</a>
+                        </div>
+
+
                     </section>
                 </div>
 {{--            </div>--}}
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
     </div>
 @endsection
