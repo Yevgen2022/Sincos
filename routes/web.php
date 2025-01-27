@@ -44,6 +44,7 @@ Route::get('/categoryUser', [App\Http\Controllers\CategoryForUser\CategoryUsersI
 Route::get('/categoryUser/filter', [App\Http\Controllers\CategoryForUser\CategoryUsersIndexController::class, 'filter'])->name('categoryforusers.filter');
 
 Route::get('/carddetail/{id}', [App\Http\Controllers\CardDetail\CardDetailIndexController::class, '__invoke'])->name('carddetail');
+Route::get('/product/{id}/reviews', [App\Http\Controllers\Review\ReviewController::class, 'getReviews'])->name('product.reviews');
 
 //Route::prefix('categories')->group(function () {
 //    Route::get('/', CategoryIndexController::class)->name('categories.index');
