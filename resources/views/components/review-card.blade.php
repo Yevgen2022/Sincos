@@ -34,9 +34,7 @@
 
                             <div class="mt-3 space-y-6 text-sm text-gray-500">
                                 <p>{{ $review->review }}</p>
-{{--                                <p>The product quality is amazing, it looks and feel even better than I had anticipated.--}}
-{{--                                    Brilliant stuff! I would gladly recommend this store to my friends. And, now that I--}}
-{{--                                    think of it... I actually have, many times!</p>--}}
+
                             </div>
                         </div>
                     </div>

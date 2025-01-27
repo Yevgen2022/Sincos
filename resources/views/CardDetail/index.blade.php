@@ -69,9 +69,13 @@
                         </div>
                     </form>
 
-                    <div class="mt-16">
-                        <a href="{{ route ('product.reviews', $product->id) }}" class="text-indigo-600 hover:text-blue-300 active:text-indigo-600">Show reviews ...</a>
+                    <div class="mt-16 flex justify-between">
+                        <a href="{{ route('product.reviews', $product->id) }}" class="text-indigo-600 hover:text-blue-300 active:text-indigo-600">Show reviews ...</a>
+                        <a href="{{ route('productUser.index') }}" class="text-indigo-600 hover:text-blue-300 active:text-indigo-600">Go Back ...</a>
                     </div>
+
+
+
                 </section>
             </div>
 
