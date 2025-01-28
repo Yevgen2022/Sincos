@@ -29,6 +29,21 @@ Route::delete('/products/{id}', [App\Http\Controllers\Products\ProductsDeleteCon
 Route::get('/products', App\Http\Controllers\Products\ProductsIndexController::class)->name('products');
 
 
+
+
+//use App\Http\Controllers\ProductController;
+//
+//Route::prefix('products')->group(function () {
+//    Route::get('/', [ProductController::class, 'index']);
+//    Route::post('/', [ProductController::class, 'store']);
+//    Route::get('/{id}', [ProductController::class, 'show']);
+//    Route::put('/{id}', [ProductController::class, 'update']);
+//    Route::delete('/{id}', [ProductController::class, 'destroy']);
+//});
+
+
+
+
 //Route::middleware(['auth', 'admin'])->group(function () {
 Route::put('/admin/update/{id}', [App\Http\Controllers\User\AdminUserUpdateController::class, 'update'])->name('user.update');
 Route::get('/admin/update/{id}', [App\Http\Controllers\User\AdminUserUpdateController::class, 'showEditForm'])->name('user.showEditForm');
@@ -45,11 +60,3 @@ Route::get('/categoryUser/filter', [App\Http\Controllers\CategoryForUser\Categor
 
 Route::get('/carddetail/{id}', [App\Http\Controllers\CardDetail\CardDetailIndexController::class, '__invoke'])->name('carddetail');
 
-//Route::prefix('categories')->group(function () {
-//    Route::get('/', CategoryIndexController::class)->name('categories.index');
-//    Route::get('/create', CategoryCreateController::class)->name('categories.create');
-//    Route::post('/', CategoryStoreController::class)->name('categories.store');
-//    Route::get('/{category}/edit', CategoryEditController::class)->name('categories.edit');
-//    Route::put('/{category}', CategoryUpdateController::class)->name('categories.update');
-//    Route::delete('/{category}', CategoryDestroyController::class)->name('categories.destroy');
-//});
