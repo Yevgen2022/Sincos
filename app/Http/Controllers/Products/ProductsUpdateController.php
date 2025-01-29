@@ -2,50 +2,42 @@
 
 namespace App\Http\Controllers\Products;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Product\ProductUpdateRequest;
 use App\Models\Category;
 use App\Models\Product;
+use App\Services\CategoryService;
+use App\Services\ProductService;
 use Illuminate\Http\Request;
 
-class ProductsUpdateController
+class ProductsUpdateController extends Controller
 {
+
+    private ProductService $productService;
+    private CategoryService $categoryService;
+
+    public function __construct(ProductService $productService, CategoryService $categoryService, )
+    {
+        $this->productService = $productService;
+        $this->categoryService = $categoryService;
+    }
 
 
     public function showEditForm($id)
     {
-        $categories = Category::all();
-        $product = Product::findOrFail($id);
-
-        $currentCategoryName = Category::findOrFail($product->category_id)->name;
+        $categories = $this->categoryService->getCategoriesService();
+        $product = $this->productService->getProductByIdService($id);
+        $currentCategoryName = $this->categoryService->getCategoriesIdService($product->category_id);
 
         return view('products.showEditForm', compact('product', 'categories', 'currentCategoryName'));
 
     }
 
-    public function update(Request $request, $id): \Illuminate\Http\RedirectResponse
+    public function update(ProductUpdateRequest $request, $id): \Illuminate\Http\RedirectResponse
     {
-        $product = Product::findOrFail($id);
 
-        // Валідація даних
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:100',
-            'description' => 'required|string|max:100',
-            'category' => 'required|string|max:100',
-            'price' => [
-                'required',
-                'regex:/^\d+([.,]\d{1,2})?$/', // Allows numbers with comma or period, maximum 2 characters after
-            ],
-        ], [
-            'description.required' => 'The product description is required.',
-            'description.max' => 'The product description must not exceed 100 characters.',
-            'price.regex' => 'The price must be a valid number with up to two decimal places.',
-        ]);
-
-        // Оновлення продукту
-        $product->name = $validatedData['name'];
-        $product->description = $validatedData['description'];
-        $product->setFormattedPrice($validatedData['price']);
-        $product->category_id = $validatedData['category'];
-        $product->save();
+        $this->productService->getProductByIdService($id);
+        $this->productService->updateProductService($id,$request->validated());
 
         return redirect()->route('products')->with('success', 'Product updated successfully!');
     }

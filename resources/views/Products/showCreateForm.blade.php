@@ -20,7 +20,7 @@
 
                 <div class="mb-4">
                     <label for="product_category" class="block text-sm font-medium text-gray-700">Product Category</label>
-                    <select id="product_category" name="category"
+                    <select id="product_category" name="category_id"
                             class="mt-1 p-3 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                         <option value="" disabled {{ old('category') ? '' : 'selected' }}>Select a category</option>
                         @foreach($categories as $category)
