@@ -19,6 +19,15 @@ class ProductService
         return $this->productRepository->getAll();
     }
 
+
+    public function getPaginate($number)
+    {
+        return $this->productRepository->getProductPaginate($number);
+    }
+
+
+
+
     public function createProduct(array $data)
     {
         return $this->productRepository->create($data);

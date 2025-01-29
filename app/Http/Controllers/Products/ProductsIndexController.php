@@ -29,14 +29,6 @@ class ProductsIndexController extends Controller
      */
 
 
-
-
-
-
-
-
-
-
     private ProductService $productService;
 
     public function __construct(ProductService $productService)
@@ -45,35 +37,30 @@ class ProductsIndexController extends Controller
     }
 
 
-
 // Показати всі продукти
-//    public function index(): JsonResponse
-//    {
-//        $products = $this->productService->getAllProducts();
-//        return response()->json($products);
-//    }
-
-
-
-
-
-
-
-
     public function __invoke()
     {
-
-        /**
-         * Get all categories from table categories
-         */
-        $products = Product::paginate(5);
-
-        /**
-         * creates an array with the 'categories' key, which is available in the Blade template.
-         */
-
+        $number = 10;
+        $products = $this->productService->getPaginate($number);
         return view('Products.index', compact('products'));
     }
+
+
+
+//    public function __invoke()
+//    {
+//
+//        /**
+//         * Get all categories from table categories
+//         */
+//        $products = Product::paginate(5);
+//
+//        /**
+//         * creates an array with the 'categories' key, which is available in the Blade template.
+//         */
+//
+//        return view('Products.index', compact('products'));
+//    }
 
 
 }

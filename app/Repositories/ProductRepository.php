@@ -11,6 +11,14 @@ class ProductRepository
         return Product::all();
     }
 
+
+    public function getProductPaginate($number)
+    {
+        return Product::paginate($number);
+    }
+
+
+
     public function create(array $data)
     {
         return Product::create($data);
