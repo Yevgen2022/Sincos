@@ -26,7 +26,9 @@ class CategoryDeleteController extends Controller
      */
 
     private $categoryService;
-    public function __construct(CategoryService $categoryService){
+
+    public function __construct(CategoryService $categoryService)
+    {
         $this->categoryService = $categoryService;
     }
 
@@ -34,24 +36,12 @@ class CategoryDeleteController extends Controller
     public function delete(int $id): \Illuminate\Http\RedirectResponse
     {
 
-        /**
-         * we find the category by ID
-         */
-//        $category = Category::findOrFail($id);
-//
-//        $category->delete();
-
         $this->categoryService->categoryDeleteService($id);
 
-        /**
-         * We redirect back to the list of categories with a message
-         */
 
         return redirect()->route('category')
             ->with('success', 'Category successfully deleted!');
     }
-
-
 
 
 }

@@ -34,16 +34,29 @@ class CategoryService
         return $this->categoryRepository->getCategoryByIdRepository($id);
     }
 
-      public function categoryCreateService($data)
-      {
+    public function getCategoriesOnlyIdService(int $id)
+    {
+        return $this->categoryRepository->getCategoryOnlyIdRepository($id);
+    }
 
-          $data['slug'] = Str::slug($data['name']);
-           return $this->categoryRepository->categoryCreateRepository($data);
-      }
 
-      public function categoryDeleteService($id){
+
+
+    public function categoryCreateService($data)
+    {
+
+        $data['slug'] = Str::slug($data['name']);
+        return $this->categoryRepository->categoryCreateRepository($data);
+    }
+
+    public function categoryDeleteService($id)
+    {
         return $this->categoryRepository->categoryDeleteRepository($id);
-      }
+    }
 
 
+    public function categoryUpdateService($data, $id)
+    {
+        $this->categoryRepository->categoryUpdateRepository($data, $id);
+    }
 }
