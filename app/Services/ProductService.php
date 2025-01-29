@@ -66,9 +66,6 @@ class ProductService
     }
 
 
-
-
-
     public function deleteProduct(int $id): void
     {
         if (!$this->productRepository->delete($id)) {

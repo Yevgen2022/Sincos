@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Products;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
+use App\Services\ProductService;
 use Illuminate\Http\Request;
 
 class ProductsDeleteController extends Controller
@@ -24,17 +25,22 @@ class ProductsDeleteController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+
+    private $productService;
+
+    public function __construct(ProductService $productService)
+    {
+        $this->productService = $productService;
+    }
+
+
     public function delete(int $id): \Illuminate\Http\RedirectResponse
     {
 
-        $product = Product::findOrFail($id);
+        $this->productService->deleteProduct($id);
 
-        if ($product) {
-            $product->delete();
-            return redirect()->route('products')->with('success', 'Product deleted successfully!');
-        }
-
-        return redirect()->route('products')->with('error', 'Product not found!');;
+        return redirect()->route('products')->with('error', 'Product not found!');
 
     }
 
