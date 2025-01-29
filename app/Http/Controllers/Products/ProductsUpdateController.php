@@ -25,9 +25,9 @@ class ProductsUpdateController extends Controller
 
     public function showEditForm($id)
     {
-        $categories = $this->categoryService->getCategories();
-        $product = $this->productService->getProductById($id);
-        $currentCategoryName = $this->categoryService->getCategoriesId($product->category_id);
+        $categories = $this->categoryService->getCategoriesService();
+        $product = $this->productService->getProductByIdService($id);
+        $currentCategoryName = $this->categoryService->getCategoriesIdService($product->category_id);
 
         return view('products.showEditForm', compact('product', 'categories', 'currentCategoryName'));
 
@@ -36,8 +36,8 @@ class ProductsUpdateController extends Controller
     public function update(ProductUpdateRequest $request, $id): \Illuminate\Http\RedirectResponse
     {
 
-        $this->productService->getProductById($id);
-        $this->productService->updateProduct($id,$request->validated());
+        $this->productService->getProductByIdService($id);
+        $this->productService->updateProductService($id,$request->validated());
 
         return redirect()->route('products')->with('success', 'Product updated successfully!');
     }

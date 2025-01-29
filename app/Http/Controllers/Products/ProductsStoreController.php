@@ -24,7 +24,7 @@ class ProductsStoreController extends Controller
 
     public function showCreateForm(): View
     {
-        $categories = $this->categoryService->getCategories();
+        $categories = $this->categoryService->getCategoriesService();
         return view('products.showCreateForm', compact('categories'));
     }
 
@@ -32,7 +32,7 @@ class ProductsStoreController extends Controller
     public function store(ProductStoreRequest $request)
     {
 
-        $this->productService->createProduct($request->validated());
+        $this->productService->createProductService($request->validated());
 
         return redirect()->route('products')->with('success', 'Product created successfully!');
     }

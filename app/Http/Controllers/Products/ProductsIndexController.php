@@ -41,7 +41,7 @@ class ProductsIndexController extends Controller
     public function __invoke()
     {
         $number = 10;
-        $products = $this->productService->getPaginate($number);
+        $products = $this->productService->getPaginateService($number);
 
         return view('Products.index', compact('products'));
     }

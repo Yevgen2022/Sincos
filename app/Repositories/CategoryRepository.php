@@ -8,12 +8,12 @@ class CategoryRepository
 {
 
 
-    public function getAllCategories()
+    public function getCategoriesRepository()
     {
         return Category::all();
     }
 
-public function getCategoryById($id){
+public function getCategoryByIdRepository($id){
         return Category::findOrFail($id)->name;
 }
 

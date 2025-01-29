@@ -3,8 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\Product;
-use Illuminate\Support\Str;
-use Faker\Factory as Faker;
 
 class ProductRepository
 
@@ -15,27 +13,27 @@ class ProductRepository
 //    }
 
 
-    public function getProductPaginate($number)
+    public function getPaginateRepository($number)
     {
         return Product::paginate($number);
     }
 
 
-    public function create(array $data)
+    public function createProductRepository(array $data)
     {
          return Product::create($data);
     }
 
 
-    public function findById(int $id)
+    public function findByIdRepository(int $id)
     {
         return Product::findOrFail($id);
     }
 
 
-        public function update(int $id, array $data)
+        public function updateProductRepository(int $id, array $data)
     {
-        $product = $this->findById($id);
+        $product = $this->findByIdRepository($id);
         $product->update($data);
         return $product;
     }
@@ -43,9 +41,9 @@ class ProductRepository
 
 
 
-    public function delete(int $id): bool
+    public function deleteProductRepository(int $id): bool
     {
-        $product = $this->findById($id);
+        $product = $this->findByIdRepository($id);
         return $product->delete();
     }
 }

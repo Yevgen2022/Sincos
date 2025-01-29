@@ -23,12 +23,12 @@ class ProductService
 //    }
 
 
-    public function getPaginate($number)
+    public function getPaginateService($number)
     {
-        return $this->productRepository->getProductPaginate($number);
+        return $this->productRepository->getPaginateRepository($number);
     }
 
-    public function createProduct(array $data)
+    public function createProductService(array $data)
     {
         $product =new Product();
         $faker = Faker::create();
@@ -42,18 +42,18 @@ class ProductService
         $data['vat_rate'] = $faker->randomElement([5, 10, 20]);
         $data['img_src'] = Product::inRandomOrder()->value('img_src');
 
-        return $this->productRepository->create($data);
+        return $this->productRepository->createProductRepository($data);
     }
 
 
 
-    public function getProductById(int $id)
+    public function getProductByIdService(int $id)
     {
-        return $this->productRepository->findById($id);
+        return $this->productRepository->findByIdRepository($id);
     }
 
 
-    public function updateProduct(int $id, array $data)
+    public function updateProductService(int $id, array $data)
     {
         $product =new Product();
         $product->setFormattedPrice($data['price']);
@@ -62,13 +62,13 @@ class ProductService
 
         $data['slug'] = Str::slug($data['name']);
 
-        return $this->productRepository->update($id, $data);
+        return $this->productRepository->updateProductRepository($id, $data);
     }
 
 
-    public function deleteProduct(int $id): void
+    public function deleteProductService(int $id): void
     {
-        if (!$this->productRepository->delete($id)) {
+        if (!$this->productRepository->deleteProductRepository($id)) {
             throw new ModelNotFoundException("Product not found.");
         }
     }

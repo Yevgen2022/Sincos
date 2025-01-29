@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Products;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Product;
 use App\Services\ProductService;
-use Illuminate\Http\Request;
+
 
 class ProductsDeleteController extends Controller
 {
@@ -38,7 +36,7 @@ class ProductsDeleteController extends Controller
     public function delete(int $id): \Illuminate\Http\RedirectResponse
     {
 
-        $this->productService->deleteProduct($id);
+        $this->productService->deleteProductService($id);
 
         return redirect()->route('products')->with('error', 'Product not found!');
 
