@@ -28,6 +28,10 @@ class CategoryRepository
         return Category::create($data);
     }
 
+    public function categoryDeleteRepository($id)
+    {
+        return Category::destroy($id);
+    }
 
 
 

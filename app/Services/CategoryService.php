@@ -41,5 +41,9 @@ class CategoryService
            return $this->categoryRepository->categoryCreateRepository($data);
       }
 
+      public function categoryDeleteService($id){
+        return $this->categoryRepository->categoryDeleteRepository($id);
+      }
+
 
 }
