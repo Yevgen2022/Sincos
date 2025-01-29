@@ -22,6 +22,11 @@ class CategoryService
     }
 
 
+    public function getCategoriesPaginateService($number)
+    {
+        return $this->categoryRepository->getCategoryPaginateRepository($number);
+    }
+
 
     public function getCategoriesIdService(int $id)
     {

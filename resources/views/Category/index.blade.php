@@ -22,7 +22,8 @@
                             </div>
                         </div>
 
-                        <div class="hidden sm:flex sm:flex-col sm:items-end gap-4"> <!-- Add gap for the distance between elements -->
+                        <div class="hidden sm:flex sm:flex-col sm:items-end gap-4">
+                            <!-- Add gap for the distance between elements -->
                             <a href="{{ route('categories.edit', $category->id) }}"
                                class="text-sm text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg w-full text-center transition">
                                 Edit
@@ -31,7 +32,8 @@
                                   onsubmit="return confirm('Are you sure you want to delete this category?');">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 w-full">
+                                <button type="submit"
+                                        class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 w-full">
                                     Delete
                                 </button>
                             </form>
@@ -41,6 +43,12 @@
                 @endforeach
 
             </ul>
+
+            <!-- Pagination -->
+            <div class="pagination mt-4 ">
+                {{ $categories->links('pagination::tailwind') }} <!-- Виводить посилання для переходу між сторінками -->
+            </div>
+
         </div>
 
 

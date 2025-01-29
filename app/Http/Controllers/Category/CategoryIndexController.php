@@ -41,7 +41,8 @@ class CategoryIndexController extends Controller
          * Get all categories from table categories
          */
 
-          $categories = $this->categoryService->getCategoriesService();
+          $number = 4;
+          $categories = $this->categoryService->getCategoriesPaginateService($number);
         /**
          * creates an array with the 'categories' key, which is available in the Blade template.
          */

@@ -13,8 +13,14 @@ class CategoryRepository
         return Category::all();
     }
 
-public function getCategoryByIdRepository($id){
+    public function getCategoryByIdRepository($id)
+    {
         return Category::findOrFail($id)->name;
-}
+    }
 
+
+    public function getCategoryPaginateRepository($number)
+    {
+        return Category::paginate($number);
+    }
 }
