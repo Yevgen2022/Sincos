@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Category;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Services\CategoryService;
 use Illuminate\Http\Request;
 
 class CategoryIndexController extends Controller
@@ -23,14 +24,24 @@ class CategoryIndexController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+
+
+    private $categoryService;
+
+    public function __construct(CategoryService $categoryService){
+        $this->categoryService = $categoryService;
+    }
+
+
     public function __invoke()
     {
 
         /**
          * Get all categories from table categories
          */
-        $categories = Category::all();
 
+          $categories = $this->categoryService->getCategoriesService();
         /**
          * creates an array with the 'categories' key, which is available in the Blade template.
          */
