@@ -7,6 +7,9 @@ use App\Repositories\CategoryRepository;
 class CategoryService
 {
 
+    private $categoryRepository;
+
+
     public function __construct(CategoryRepository $categoryRepository)
     {
         $this->categoryRepository = $categoryRepository;
@@ -20,6 +23,10 @@ class CategoryService
 
 
 
+    public function getCategoriesId(int $id)
+    {
+        return $this->categoryRepository->getCategoryById($id);
+    }
 
 
 

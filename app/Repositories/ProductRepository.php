@@ -32,12 +32,16 @@ class ProductRepository
         return Product::findOrFail($id);
     }
 
-    public function update(int $id, array $data)
+
+        public function update(int $id, array $data)
     {
         $product = $this->findById($id);
         $product->update($data);
         return $product;
     }
+
+
+
 
     public function delete(int $id): bool
     {

@@ -13,6 +13,8 @@ class CategoryRepository
         return Category::all();
     }
 
-
+public function getCategoryById($id){
+        return Category::findOrFail($id)->name;
+}
 
 }

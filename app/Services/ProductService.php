@@ -28,7 +28,6 @@ class ProductService
         return $this->productRepository->getProductPaginate($number);
     }
 
-
     public function createProduct(array $data)
     {
         $product =new Product();
@@ -47,15 +46,28 @@ class ProductService
     }
 
 
+
     public function getProductById(int $id)
     {
         return $this->productRepository->findById($id);
     }
 
+
     public function updateProduct(int $id, array $data)
     {
+        $product =new Product();
+        $product->setFormattedPrice($data['price']);
+        // Now we store the calculated value for price_excluding_vat_in_minor_units in the array
+        $data['price_excluding_vat_in_minor_units'] = $product->price_excluding_vat_in_minor_units;
+
+        $data['slug'] = Str::slug($data['name']);
+
         return $this->productRepository->update($id, $data);
     }
+
+
+
+
 
     public function deleteProduct(int $id): void
     {

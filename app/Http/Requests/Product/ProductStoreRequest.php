@@ -10,7 +10,7 @@ class ProductStoreRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:100',
-            'description' => 'required|string|max:100',
+            'description' => 'required|string|max:500',
             'category_id' => 'required|exists:categories,id', // Перевіряємо, що категорія існує
             'price' => [
                 'required',
