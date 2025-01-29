@@ -23,4 +23,12 @@ class CategoryRepository
     {
         return Category::paginate($number);
     }
+
+    public function categoryCreateRepository($data){
+        return Category::create($data);
+    }
+
+
+
+
 }

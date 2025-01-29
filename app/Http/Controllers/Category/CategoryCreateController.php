@@ -3,32 +3,31 @@
 namespace App\Http\Controllers\Category;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use App\Http\Requests\Category\CategoryStoreRequest;
+use App\Services\CategoryService;
 use Illuminate\View\View;
 
 class CategoryCreateController extends Controller
 {
+
+    private  $categoryService;
+
+    public function __construct(CategoryService $categoryService){
+        $this->categoryService = $categoryService;
+    }
+
+
     public function showForm(): View
     {
 
         return view('Category.create');
     }
 
-    public function store(Request $request)
+    public function store(CategoryStoreRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-        ]);
 
-        // Creating a slug based on name
-        $slug = Str::slug($validated['name']);  // We use the auxiliary function str_slug (with Laravel 8.x it can be str()->slug())
+        $this->categoryService->categoryCreateService($request->validated());
 
-        Category::create([
-            'name' => $validated['name'],
-            'slug' => $slug
-        ]);
 
         return redirect()->route('category')->with('success', 'Category created successfully!');
     }

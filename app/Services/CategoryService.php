@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\CategoryRepository;
+use Illuminate\Support\Str;
 
 class CategoryService
 {
@@ -33,7 +34,12 @@ class CategoryService
         return $this->categoryRepository->getCategoryByIdRepository($id);
     }
 
+      public function categoryCreateService($data)
+      {
 
+          $data['slug'] = Str::slug($data['name']);
+           return $this->categoryRepository->categoryCreateRepository($data);
+      }
 
 
 }
