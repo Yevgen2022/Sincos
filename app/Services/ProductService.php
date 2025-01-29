@@ -2,8 +2,11 @@
 
 namespace App\Services;
 
+use App\Models\Product;
 use App\Repositories\ProductRepository;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Str;
+use Faker\Factory as Faker;
 
 class ProductService
 {
@@ -14,10 +17,10 @@ class ProductService
         $this->productRepository = $productRepository;
     }
 
-    public function getAllProducts()
-    {
-        return $this->productRepository->getAll();
-    }
+//    public function getAllProducts()
+//    {
+//        return $this->productRepository->getAll();
+//    }
 
 
     public function getPaginate($number)
@@ -26,12 +29,23 @@ class ProductService
     }
 
 
-
-
     public function createProduct(array $data)
     {
+        $product =new Product();
+        $faker = Faker::create();
+
+        $data['slug'] = Str::slug($data['name']);
+
+        $product->setFormattedPrice($data['price']);
+        // Now we store the calculated value for price_excluding_vat_in_minor_units in the array
+        $data['price_excluding_vat_in_minor_units'] = $product->price_excluding_vat_in_minor_units;
+
+        $data['vat_rate'] = $faker->randomElement([5, 10, 20]);
+        $data['img_src'] = Product::inRandomOrder()->value('img_src');
+
         return $this->productRepository->create($data);
     }
+
 
     public function getProductById(int $id)
     {

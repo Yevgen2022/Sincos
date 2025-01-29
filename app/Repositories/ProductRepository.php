@@ -3,13 +3,16 @@
 namespace App\Repositories;
 
 use App\Models\Product;
+use Illuminate\Support\Str;
+use Faker\Factory as Faker;
 
 class ProductRepository
+
 {
-    public function getAll()
-    {
-        return Product::all();
-    }
+//    public function getAll()
+//    {
+//        return Product::all();
+//    }
 
 
     public function getProductPaginate($number)
@@ -18,11 +21,11 @@ class ProductRepository
     }
 
 
-
     public function create(array $data)
     {
-        return Product::create($data);
+         return Product::create($data);
     }
+
 
     public function findById(int $id)
     {

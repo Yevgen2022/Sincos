@@ -42,25 +42,9 @@ class ProductsIndexController extends Controller
     {
         $number = 10;
         $products = $this->productService->getPaginate($number);
+
         return view('Products.index', compact('products'));
     }
-
-
-
-//    public function __invoke()
-//    {
-//
-//        /**
-//         * Get all categories from table categories
-//         */
-//        $products = Product::paginate(5);
-//
-//        /**
-//         * creates an array with the 'categories' key, which is available in the Blade template.
-//         */
-//
-//        return view('Products.index', compact('products'));
-//    }
 
 
 }
