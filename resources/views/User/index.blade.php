@@ -15,8 +15,6 @@
                     Add user
                 </a>
 
-
-
             </div>
         </div>
         <div class="mt-8 flow-root">
@@ -74,6 +72,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="pagination mt-4 ">
+            {{ $users->links('pagination::tailwind') }} <!-- Виводить посилання для переходу між сторінками -->
         </div>
     </div>
 @endsection
