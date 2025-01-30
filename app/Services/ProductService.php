@@ -30,7 +30,7 @@ class ProductService
 
     public function createProductService(array $data)
     {
-        $product =new Product();
+        $product = new Product();
         $faker = Faker::create();
 
         $data['slug'] = Str::slug($data['name']);
@@ -46,7 +46,6 @@ class ProductService
     }
 
 
-
     public function getProductByIdService(int $id)
     {
         return $this->productRepository->findByIdRepository($id);
@@ -55,7 +54,7 @@ class ProductService
 
     public function updateProductService(int $id, array $data)
     {
-        $product =new Product();
+        $product = new Product();
         $product->setFormattedPrice($data['price']);
         // Now we store the calculated value for price_excluding_vat_in_minor_units in the array
         $data['price_excluding_vat_in_minor_units'] = $product->price_excluding_vat_in_minor_units;
@@ -72,4 +71,11 @@ class ProductService
             throw new ModelNotFoundException("Product not found.");
         }
     }
+
+    public function searchProductsService($search, $itemsPerPage)
+    {
+        return $this->productRepository->searchProductsRepository($search, $itemsPerPage);
+    }
+
+
 }

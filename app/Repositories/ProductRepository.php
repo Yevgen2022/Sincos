@@ -21,7 +21,7 @@ class ProductRepository
 
     public function createProductRepository(array $data)
     {
-         return Product::create($data);
+        return Product::create($data);
     }
 
 
@@ -31,19 +31,25 @@ class ProductRepository
     }
 
 
-        public function updateProductRepository(int $id, array $data)
+    public function updateProductRepository(int $id, array $data)
     {
         $product = $this->findByIdRepository($id);
         $product->update($data);
         return $product;
     }
 
-
-
-
     public function deleteProductRepository(int $id): bool
     {
         $product = $this->findByIdRepository($id);
         return $product->delete();
     }
+
+    public function searchProductsRepository($search, $itemsPerPage)
+    {
+        return Product::when($search, function ($query, $search) {
+            return $query->where('name', 'LIKE', "%{$search}%");
+        })->paginate($itemsPerPage);
+    }
+
+
 }
