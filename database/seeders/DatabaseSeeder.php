@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
 
 
     {
+        $this->call(RoleSeeder::class);
         $this->call(CategorySeeder::class);     //Create database with seeder
 
         // User::factory(20)->create();          //Create database with factory
@@ -26,6 +27,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call(ReviewSeeder::class);
         // Review::factory(50)->create();
+
+
 
     }
 }

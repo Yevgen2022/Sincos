@@ -24,7 +24,7 @@ class User extends Authenticatable
         'email',
         'job',
         'password',
-        'role',
+        'role_id',
         'email_verified_at',  // Not necessary
         'remember_token',      // Not necessary
     ];
@@ -51,4 +51,11 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+    public function role(){
+        return $this->belongsTo(Role::class);
+    }
+
+
 }
