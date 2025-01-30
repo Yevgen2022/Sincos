@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -10,8 +11,8 @@ class AdminUserStoreController
 {
     public function showCreateForm()
     {
-//        $roles = Role::all();
-        return view('User.showCreateForm');
+        $roles = Role::all();
+        return view('User.showCreateForm', compact('roles'));
     }
 
 
