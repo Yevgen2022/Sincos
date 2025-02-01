@@ -49,10 +49,18 @@
                     @enderror
                 </div>
 
+
                 <div class="mb-4">
                     <label for="user_role" class="block text-sm font-medium text-gray-700">User role</label>
-                    <input type="text" id="user_role" name="role" value="{{ old('role')}}"
-                           class="mt-1 p-3 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <select id="user_role" name="role_id"
+                            class="mt-1 p-3 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        <option value="">Select a role</option>
+                        @foreach($roles as $role)
+                            <option value="{{ $role->id }}" {{ old('role') == $role->id ? 'selected' : '' }}>
+                                {{ $role->name }}
+                            </option>
+                        @endforeach
+                    </select>
                     @error('role')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror

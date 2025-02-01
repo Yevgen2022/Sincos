@@ -18,13 +18,12 @@ class AdminUserStoreController
 
     public function store(Request $request)
     {
-        // Валідація даних з запиту
+        // Data validation from the request
         $validatedData = $request->validate([
-            'name' => 'required|max:255',  // Збільшено максимальний розмір до 255
-            'email' => 'required|email|unique:users,email',  // Валідація для унікального email
-            'job' => 'required|max:255',   // Збільшено максимальний розмір до 255
-            'role' => 'required|in:user,admin',  // Перевірка на допустимі ролі
-//            'password' => 'required|min:8', // Додав валідацію для пароля
+            'name' => 'required|max:255',  // Increased maximum size to 255
+            'email' => 'required|email|unique:users,email',  // Validation for a unique email
+            'job' => 'required|max:255',   // Increased maximum size to 255
+            'role_id' => 'required|exists:roles,id',  // Checking if a role exists in the roles table
         ], [
             'name.required' => 'Name is a required field.',
             'name.max' => 'Name cannot exceed 255 characters.',
@@ -37,18 +36,17 @@ class AdminUserStoreController
             'role.in' => 'Role must be either "user" or "admin".',
         ]);
 
-        // Створення нового користувача
+        // Create a new user
         $user = new User();
         $user->name = $validatedData['name'];
         $user->email = $validatedData['email'];
         $user->job = $validatedData['job'];
-        $user->role = $validatedData['role'];
-        $user->password = bcrypt('password'); // Встановлюємо пароль за замовчуванням // Хешування пароля перед збереженням
+        $user->role_id = $validatedData['role_id'];
+        $user->password = bcrypt('password'); // We set the default password Hashing the password before saving
         $user->remember_token = Str::random(60);
         $user->email_verified_at = now();
         $user->save();
 
-        // Повернення відповіді (наприклад, переадресація чи повідомлення)
         return redirect()->route('admin.user')->with('success', 'Користувача успішно додано');
     }
 
