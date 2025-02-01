@@ -85,16 +85,16 @@
 
     @section('scripts')
         <script>
-            // Отримуємо елементи
+            // We get elements
             const changePasswordCheckbox = document.getElementById('change_password');
             const passwordField = document.getElementById('password_field');
 
-            // Функція для управління відображенням поля пароля
+            // A function to control the display of the password field
             changePasswordCheckbox.addEventListener('change', function () {
                 if (this.checked) {
-                    passwordField.style.display = 'block'; // Покажемо поле пароля
+                    passwordField.style.display = 'block'; // Let's show the password field
                 } else {
-                    passwordField.style.display = 'none'; // Сховаємо поле пароля
+                    passwordField.style.display = 'none'; // Hide the password field
                 }
             });
         </script>
