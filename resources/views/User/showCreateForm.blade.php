@@ -5,7 +5,6 @@
         <div class="w-full max-w-4xl bg-white shadow-md rounded-lg p-6 mt-10">
             <h2 class="text-2xl font-semibold text-gray-800 text-center mb-6">Add User</h2>
 
-
             <form action="{{ route('user.store') }}" method="POST">
                 @csrf
                 @method('POST')
@@ -30,7 +29,6 @@
                     @enderror
                 </div>
 
-
                 <div class="mb-4">
                     <label for="user_email" class="block text-sm font-medium text-gray-700">User email</label>
                     <input type="email" id="user_email" name="email" value="{{ old('email')}}"
@@ -48,7 +46,6 @@
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
                 </div>
-
 
                 <div class="mb-4">
                     <label for="user_role" class="block text-sm font-medium text-gray-700">User role</label>
