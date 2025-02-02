@@ -5,7 +5,7 @@
 
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-2xl font-semibold text-gray-800">Categories</h2>
-                <a href="{{ route('categories.showForm') }}"
+                <a href="{{ route('categories.create') }}"
                    class="text-sm text-white bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg transition">
                     Create Category
                 </a>
@@ -28,7 +28,7 @@
                                class="text-sm text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg w-full text-center transition">
                                 Edit
                             </a>
-                            <form action="{{ route('categories.delete', $category->id) }}" method="POST"
+                            <form action="{{ route('categories.destroy', $category->id) }}" method="POST"
                                   onsubmit="return confirm('Are you sure you want to delete this category?');">
                                 @csrf
                                 @method('DELETE')
