@@ -25,19 +25,6 @@ Route::get('/category', App\Http\Controllers\Category\CategoryIndexController::c
 Route::resource('products', \App\Http\Controllers\Product\ProductController::class);
 
 
-Route::put('/products/store', [App\Http\Controllers\Products\ProductsStoreController::class, 'store'])->name('product.store');
-Route::put('/products/{id}', [App\Http\Controllers\Products\ProductsUpdateController::class, 'update'])->name('product.update');
-Route::get('/products/create', [App\Http\Controllers\Products\ProductsStoreController::class, 'showCreateForm'])->name('product.showCreateForm');
-Route::get('/products/{id}', [App\Http\Controllers\Products\ProductsUpdateController::class, 'showEditForm'])->name('product.showEditForm');
-Route::delete('/products/{id}', [App\Http\Controllers\Products\ProductsDeleteController::class, 'delete'])->name('product.delete');
-//Route::get('/products', App\Http\Controllers\Products\ProductsIndexController::class)->name('products');
-
-
-
-
-
-
-
 
 //Route::middleware(['auth', 'admin'])->group(function () {
 Route::put('/admin/update/{id}', [App\Http\Controllers\User\AdminUserUpdateController::class, 'update'])->name('user.update');

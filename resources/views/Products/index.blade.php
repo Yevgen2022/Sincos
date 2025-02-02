@@ -7,7 +7,7 @@
 
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-2xl font-semibold text-gray-800">Products</h2>
-                <a href="{{ route('product.showCreateForm') }}"
+                <a href="{{ route('products.create') }}"
                    class="text-sm text-white bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg transition">
                     Create Product
                 </a>
@@ -44,11 +44,11 @@
                     </div>
 
                     <div class="hidden sm:flex sm:flex-col sm:items-end gap-4"> <!-- Distance between buttons -->
-                        <a href="{{route ('product.showEditForm', $product->id) }}"
+                        <a href="{{route ('products.edit', $product->id) }}"
                            class="text-sm text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg w-full text-center transition">
                             Edit
                         </a>
-                        <form action="{{route ('product.delete', $product->id) }}" method="POST"
+                        <form action="{{route ('products.destroy', $product->id) }}" method="POST"
                               onsubmit="return confirm('Are you sure you want to delete this category?');">
                             @csrf
                             @method('DELETE')
