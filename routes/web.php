@@ -21,25 +21,20 @@ Route::post('/category/create', [App\Http\Controllers\Category\CategoryCreateCon
 Route::get('/category', App\Http\Controllers\Category\CategoryIndexController::class)->name('category');
 
 
+
+Route::resource('products', \App\Http\Controllers\Product\ProductController::class);
+
+
 Route::put('/products/store', [App\Http\Controllers\Products\ProductsStoreController::class, 'store'])->name('product.store');
 Route::put('/products/{id}', [App\Http\Controllers\Products\ProductsUpdateController::class, 'update'])->name('product.update');
 Route::get('/products/create', [App\Http\Controllers\Products\ProductsStoreController::class, 'showCreateForm'])->name('product.showCreateForm');
 Route::get('/products/{id}', [App\Http\Controllers\Products\ProductsUpdateController::class, 'showEditForm'])->name('product.showEditForm');
 Route::delete('/products/{id}', [App\Http\Controllers\Products\ProductsDeleteController::class, 'delete'])->name('product.delete');
-Route::get('/products', App\Http\Controllers\Products\ProductsIndexController::class)->name('products');
+//Route::get('/products', App\Http\Controllers\Products\ProductsIndexController::class)->name('products');
 
 
 
 
-//use App\Http\Controllers\ProductController;
-//
-//Route::prefix('products')->group(function () {
-//    Route::get('/', [ProductController::class, 'index']);
-//    Route::post('/', [ProductController::class, 'store']);
-//    Route::get('/{id}', [ProductController::class, 'show']);
-//    Route::put('/{id}', [ProductController::class, 'update']);
-//    Route::delete('/{id}', [ProductController::class, 'destroy']);
-//});
 
 
 
