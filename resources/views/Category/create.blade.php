@@ -5,7 +5,7 @@
         <div class="w-full max-w-4xl bg-white shadow-md rounded-lg p-6 mt-10">
             <h2 class="text-2xl font-semibold text-gray-800 text-center mb-6">Create Category</h2>
 
-            <form action="{{ route('categories.create') }}" method="POST">
+            <form action="{{ route('categories.store') }}" method="POST">
                 @csrf
 
                 <div class="mb-4">
@@ -19,7 +19,7 @@
                     <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
                         Create
                     </button>
-                    <a href="{{ route('category') }}"
+                    <a href="{{ route('categories.index') }}"
                        class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400">
                         Cancel
                     </a>
