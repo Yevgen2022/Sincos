@@ -52,13 +52,5 @@ class Product extends Model
         $this->price_excluding_vat_in_minor_units = (int) round((float) $price * 100);
     }
 
-    public function show($id)
-    {
-        $product = Product::withCount('reviews')->findOrFail($id);
-
-        return view('CardDetail.index', compact('product'));
-    }
-
-
 
 }
