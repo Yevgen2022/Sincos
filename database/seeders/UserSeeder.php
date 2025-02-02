@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Role;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -16,50 +15,19 @@ class UserSeeder extends Seeder
     {
         $adminRole = Role::where('name', 'Admin')->first();
         User::factory()->create([
-            'name' => 'Admin', // Ім'я адміністратора
-            'email' => 'admin@example.com', // Email адміністратора
-            'password' => bcrypt('password'), // Пароль адміністратора
-            'role_id' => $adminRole->id, // Роль адміністратора
+            'name' => 'Admin', // Admin name
+            'email' => 'admin@example.com', // Admin e-mail
+            'password' => bcrypt('password'), //Admin password
+            'role_id' => $adminRole->id, // Admin role
         ]);
 
-        // Створення решти користувачів з випадковими ролями (не Admin)
-        $roles = Role::where('name', '!=', 'Admin')->get(); // Всі ролі, окрім Admin
+        // Creating the rest of the users with random roles (not Admin)
+        $roles = Role::where('name', '!=', 'Admin')->get(); // All roles except Admin
         User::factory(50)->create()->each(function ($user) use ($roles) {
-            // Випадковим чином присвоюємо одну з ролей для кожного користувача
+            // We randomly assign one of the roles to each user
             $user->update([
-                'role_id' => $roles->random()->id, // Випадкова роль з масиву
+                'role_id' => $roles->random()->id, // A random role from the array
             ]);
         });
     }
-
-
-
-
-
-
-
-
-
-
-//// Створити роль для адміністратора, якщо вона ще не існує
-//        $adminRole = Role::firstOrCreate(['name' => 'Admin']);
-//
-//        // Create one standard user-Admin
-//        User::factory()->create([
-//            'name' => 'Admin', // Standard name
-//            'email' => 'admin@example.com', // Standard email
-//            'password' => bcrypt('password'), // Standard пароль
-//            'role_id' => $adminRole->id,
-//        ]);
-//
-//        User::factory()->create([
-//            'name' => 'Admin Two', // Standard name
-//            'email' => 'admin2@example.com', // Standard email
-//            'password' => bcrypt('password'), // Standard пароль
-//            'role_id' => $adminRole->id,
-//        ]);
-//
-//        // 10 random users
-//        User::factory(50)->create();
-//    }
 }

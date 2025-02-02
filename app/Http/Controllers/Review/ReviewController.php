@@ -29,7 +29,7 @@ class ReviewController extends Controller
 
     public function getReviews($id)
     {
-        // Отримуємо відгуки для конкретного продукту
+        // We receive feedback for a specific product
         $reviews = Review::where('product_id', $id)->get();
 
         $product = Product::findOrFail($id);
@@ -38,7 +38,7 @@ class ReviewController extends Controller
 
 
 
-        // Повертаємо Blade-шаблон, що містить компонент для відгуків
+        // Return the Blade template containing the feedback component
         return view('components.review-card', compact('product','reviews','averageRating','reviewCount'));
     }
 

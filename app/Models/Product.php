@@ -43,12 +43,12 @@ class Product extends Model
         $price = str_replace(',', '.', $price); // replace the comma with a period
 
 
-// Перевірка формату ціни (завжди з двома знаками після крапки)
+// Price format check (always with two digits after the period)
         if (!preg_match('/^\d+(\.\d{1,2})?$/', $price)) {
             throw new \InvalidArgumentException('Invalid price format. It must have up to two decimal places.');
         }
 
-        // Перетворення ціни в мінорні одиниці (наприклад, копійки)
+        // Conversion of price into minor units (for example, pennies)
         $this->price_excluding_vat_in_minor_units = (int) round((float) $price * 100);
     }
 
