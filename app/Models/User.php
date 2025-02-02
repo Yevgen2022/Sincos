@@ -12,7 +12,9 @@ class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
 
-    use HasFactory, Notifiable; //SoftDeletes;
+    use HasFactory, Notifiable;
+
+    //SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -52,8 +54,13 @@ class User extends Authenticatable
         ];
     }
 
+    public function isAdmin()
+    {
+        return $this->role_id === 1;
+    }
 
-    public function role(){
+    public function role()
+    {
         return $this->belongsTo(Role::class);
     }
 
