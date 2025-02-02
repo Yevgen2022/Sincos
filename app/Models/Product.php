@@ -38,9 +38,9 @@ class Product extends Model
 
     public function setFormattedPrice(string $priceFromForm): void
     {
-        // Видалення пробілів і заміна коми на точку для правильної конвертації
-        $price = str_replace(' ', '', $priceFromForm); // видаляємо пробіли
-        $price = str_replace(',', '.', $price); // заміняємо кому на точку
+        // Removing spaces and replacing commas with periods for correct conversion
+        $price = str_replace(' ', '', $priceFromForm); // Removing spaces
+        $price = str_replace(',', '.', $price); // replace the comma with a period
 
 
 // Перевірка формату ціни (завжди з двома знаками після крапки)
