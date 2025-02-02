@@ -38,27 +38,19 @@ class Product extends Model
 
     public function setFormattedPrice(string $priceFromForm): void
     {
-        // Видалення пробілів і заміна коми на точку для правильної конвертації
-        $price = str_replace(' ', '', $priceFromForm); // видаляємо пробіли
-        $price = str_replace(',', '.', $price); // заміняємо кому на точку
+        // Removing spaces and replacing commas with periods for correct conversion
+        $price = str_replace(' ', '', $priceFromForm); // Removing spaces
+        $price = str_replace(',', '.', $price); // replace the comma with a period
 
 
-// Перевірка формату ціни (завжди з двома знаками після крапки)
+// Price format check (always with two digits after the period)
         if (!preg_match('/^\d+(\.\d{1,2})?$/', $price)) {
             throw new \InvalidArgumentException('Invalid price format. It must have up to two decimal places.');
         }
 
-        // Перетворення ціни в мінорні одиниці (наприклад, копійки)
+        // Conversion of price into minor units (for example, pennies)
         $this->price_excluding_vat_in_minor_units = (int) round((float) $price * 100);
     }
-
-    public function show($id)
-    {
-        $product = Product::withCount('reviews')->findOrFail($id);
-
-        return view('CardDetail.index', compact('product'));
-    }
-
 
 
 }

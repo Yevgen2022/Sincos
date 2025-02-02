@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -13,18 +13,21 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // Create one standard user
+        $adminRole = Role::where('name', 'Admin')->first();
         User::factory()->create([
-            'name' => 'Admin', // Standard name
-            'email' => 'admin@example.com', // Standard email
-            'password' => bcrypt('password'), // Standard пароль
-            'role' => 'admin',
+            'name' => 'Admin', // Admin name
+            'email' => 'admin@example.com', // Admin e-mail
+            'password' => bcrypt('password'), //Admin password
+            'role_id' => $adminRole->id, // Admin role
         ]);
 
-        // 10 random users
-        User::factory(50)->create();
-
-
-
+        // Creating the rest of the users with random roles (not Admin)
+        $roles = Role::where('name', '!=', 'Admin')->get(); // All roles except Admin
+        User::factory(50)->create()->each(function ($user) use ($roles) {
+            // We randomly assign one of the roles to each user
+            $user->update([
+                'role_id' => $roles->random()->id, // A random role from the array
+            ]);
+        });
     }
 }

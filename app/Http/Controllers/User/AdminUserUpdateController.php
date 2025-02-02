@@ -2,34 +2,35 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 class AdminUserUpdateController
 {
     public function showEditForm($id)
     {
         $user = User::findOrFail($id);
+        $roles = Role::all();
 
-        return view('User.showEditForm', compact('user'));
+        return view('User.showEditForm', compact('user', 'roles'));
     }
 
 
     public function update(Request $request, $id)
     {
 
-        $user = User::findOrFail($id); // Знаходимо користувача за ID
+        $user = User::findOrFail($id);
 
-        // Валідація даних з запиту
+        // Data validation from the request
         $validatedData = $request->validate([
 
-            'name' => 'required|max:255',  // Збільшено максимальний розмір до 255
-            'email' => 'required|email|unique:users,email,' . $user->id,  // Валідація для унікального email $user->id-виключається з перевірки
-            'job' => 'required|max:255',   // Збільшено максимальний розмір до 255
-            'role' => 'required|in:user,admin',  // Перевірка на допустимі ролі
-            'password' => 'nullable|min:8|confirmed', //  Поле `password` необов'язкове
+            'name' => 'required|max:255',  // Increased maximum size to 255
+            'email' => 'required|email|unique:users,email,' . $user->id,  // Validation for a unique email
+            'job' => 'required|max:255',   // Increased maximum size to 255
+            'role_id' => 'required|exists:roles,id',  // Checking if a role exists in the roles table
+            'password' => 'nullable|min:8|confirmed', //  field `password` does not necessary
 
         ], [
 
@@ -48,22 +49,20 @@ class AdminUserUpdateController
         ]);
 
 
-        // Створення нового користувача
+        // Create a new user
         $user->name = $validatedData['name'];
         $user->email = $validatedData['email'];
         $user->job = $validatedData['job'];
-        $user->role = $validatedData['role'];
+        $user->role_id = $validatedData['role_id'];
 
         if ($request->filled('password')) {
             $validatedData['password'] = Hash::make($request->password);
         } else {
-            unset($validatedData['password']); // Не змінюємо пароль
+            unset($validatedData['password']); // Do not change password
         }
 
         $user->update($validatedData);
 
-
-        // Повернення відповіді (наприклад, переадресація чи повідомлення)
         return redirect()->route('admin.user')->with('success', 'User successfully added');
     }
 
