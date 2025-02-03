@@ -10,7 +10,7 @@
             <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
 
 
-                <a href="{{route('user.showCreateForm')}}"
+                <a href="{{route('users.create')}}"
                         class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                     Add user
                 </a>
@@ -53,11 +53,11 @@
                                     <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
 
 
-                                        <a href="{{ route('user.showEditForm', $user->id) }}" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, {{ $user->name }}</span></a>
+                                        <a href="{{ route('users.edit', $user->id) }}" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, {{ $user->name }}</span></a>
 
 
 {{--                                        <a href="#" class="ml-4 text-red-600 hover:text-red-900">Delete<span class="sr-only">, {{ $user->name }}</span></a>--}}
-                                        <form action="{{ route('user.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                                        <form action="{{ route('users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="text-red-600 hover:text-red-900">Delete</button>
