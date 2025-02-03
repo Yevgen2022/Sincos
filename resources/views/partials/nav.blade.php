@@ -127,7 +127,7 @@
                     @endauth
 
                     @auth
-{{--                        @if(auth()->user()->role === 'admin')--}}
+
                         @if(auth()->user()->isAdmin())
                             <div class="ml-3">
                                 <form method="GET" action="{{ route('admin.dashboard') }}">

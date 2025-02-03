@@ -74,8 +74,11 @@ class LoginController extends Controller
             // Аутентифікуємо користувача
             Auth::login($user);
 
+
             // Перевірка ролі
             if ($user->role === 'admin') {
+//            if ($user->role_id === 1) {
+//                dd($user->role_id);
                 return redirect()->route('admin.dashboard'); // Перенаправлення для адміністратора
 
             }
