@@ -2,15 +2,31 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Repositories\UserRepository;
+use App\Services\UserService;
 
-class AdminUserIndexController
+class AdminUserIndexController extends Controller
 {
+
+    private UserService $userService;
+    private UserRepository $userRepository;
+
+    public function __construct(UserService $userService, UserRepository $userRepository)
+    {
+        $this->userService = $userService;
+        $this->userRepository = $userRepository;
+    }
+
+
     public function index()
     {
-//        $users = User::all();
-        $users = User::paginate(10);
+        $number = 5;
+        $users = $this->userService->getUsersPaginateService($number);
+
         return view('User.index', compact('users'));
+
     }
 
 }
