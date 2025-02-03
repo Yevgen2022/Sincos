@@ -16,7 +16,7 @@ Route::get('/homeUserPage', [App\Http\Controllers\HomeController::class, 'homeUs
 
 Route::resource('products', \App\Http\Controllers\Product\ProductController::class);
 Route::resource('categories', \App\Http\Controllers\Category\CategoryController::class);
-Route::resource('users', \App\Http\Controllers\Users\UserController::class);
+Route::resource('users', \App\Http\Controllers\User\UserController::class);
 
 
 
