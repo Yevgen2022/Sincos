@@ -36,6 +36,20 @@ class UserService
         return $this->userRepository->storeUserRepository($data);
 
     }
+    public function getUserByIdService($id){
+        return $this->userRepository->getUserByIdRepository($id);
+    }
 
+    public function updateUserService($user, array $data){
+
+        if (array_key_exists('password', $data) && !empty($data['password'])) {
+            $data['password'] = Hash::make($data['password']);
+        } else {
+            unset($data['password']); // Убезпечуємо код від помилок
+        }
+
+
+        return $this->userRepository->updateUserRepository($user, $data);
+    }
 
 }

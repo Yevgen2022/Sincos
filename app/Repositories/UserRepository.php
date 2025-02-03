@@ -18,10 +18,17 @@ class UserRepository
         return Role::all();
     }
 
-
     public function storeUserRepository($data)
     {
         return User::create($data);
     }
 
+    public function getUserByIdRepository($id){
+        return User::findOrFail($id);
+    }
+
+
+    public function updateUserRepository($user, $data){
+        return $user->update($data);
+    }
 }
