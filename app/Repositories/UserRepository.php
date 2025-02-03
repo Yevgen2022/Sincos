@@ -31,4 +31,9 @@ class UserRepository
     public function updateUserRepository($user, $data){
         return $user->update($data);
     }
+
+
+    public function deleteUserRepository($user){
+        return $user->delete();
+    }
 }

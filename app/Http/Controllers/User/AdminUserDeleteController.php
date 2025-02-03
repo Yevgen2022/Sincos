@@ -3,22 +3,31 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\User;
+use App\Services\UserService;
 
 class AdminUserDeleteController
 {
+
+
+    protected $userService;
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
+
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
 
+        $user = $this->userService->getUserByIdService($id);
 
-        // Check: Deny administrator removal
-        if ($user->role === 'admin') {
+        if ($this->userService->checkIfAdminService($user)) {
             return redirect()->route('admin.user')->with('error', 'You cannot delete an admin user.');
         }
 
-
-        $user->delete();
-        return redirect()->route('admin.user')->with('success', 'User deleted successfully.');
+        $this->userService->deleteUserService($user);
+        return redirect()->route('admin.user')->with('success', "User {$user->name} ({$user->email}) deleted successfully.");
     }
 
 }

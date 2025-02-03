@@ -45,11 +45,19 @@ class UserService
         if (array_key_exists('password', $data) && !empty($data['password'])) {
             $data['password'] = Hash::make($data['password']);
         } else {
-            unset($data['password']); // Убезпечуємо код від помилок
+            unset($data['password']); // We secure the code from errors
         }
-
-
         return $this->userRepository->updateUserRepository($user, $data);
+    }
+
+    public function checkIfAdminService(User $user): bool
+    {
+        return $user->role === 'admin';
+    }
+
+    public function deleteUserService(User $user): bool
+    {
+        return $this->userRepository->deleteUserRepository($user);
     }
 
 }

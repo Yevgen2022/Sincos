@@ -77,4 +77,5 @@
             {{ $users->links('pagination::tailwind') }} <!-- Виводить посилання для переходу між сторінками -->
         </div>
     </div>
+
 @endsection
