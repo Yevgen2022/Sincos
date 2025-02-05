@@ -15,13 +15,13 @@ Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('h
 Auth::routes();
 
 
-Route::middleware(['auth'])->group(function () {
-    Route::middleware(['admin'])->group(function () {
+Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
+//    Route::middleware(['admin'])->group(function () {
         Route::resource('products', \App\Http\Controllers\Product\ProductController::class);
         Route::resource('categories', \App\Http\Controllers\Category\CategoryController::class);
         Route::resource('users', \App\Http\Controllers\User\UserController::class);
         Route::get('/admin', [App\Http\Controllers\Admin\AdminIndexController::class, 'index'])->name('admin.dashboard');
-    });
+//    });
 });
 
 
