@@ -42,8 +42,6 @@ class ProductFactory extends Factory
             'rating' => $this->faker->numberBetween(1, 5),
             'category_id' => Category::inRandomOrder()->first()?->id ?? 1,
             'img_src' => null,
-
-
-        ];
+            ];
     }
 }
