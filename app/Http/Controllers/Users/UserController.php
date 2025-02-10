@@ -1,6 +1,7 @@
+
 <?php
 
-namespace App\Http\Controllers\Users;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UserStoreRequest;
@@ -13,14 +14,18 @@ class UserController extends Controller
 {
 
 
-    private UserService $userService;
-    private UserRepository $userRepository;
+//    private UserService $userService;
+//    private UserRepository $userRepository;
 
-    public function __construct(UserService $userService, UserRepository $userRepository)
-    {
-        $this->userService = $userService;
-        $this->userRepository = $userRepository;
-    }
+//    public function __construct(UserService $userService, UserRepository $userRepository)
+//    {
+//        $this->userService = $userService;
+//        $this->userRepository = $userRepository;
+
+//    }
+
+public function __construct(private UserService $userService){}
+
 
 
     /**
