@@ -6,27 +6,13 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UserStoreRequest;
 use App\Http\Requests\User\UserUpdateRequest;
-use App\Repositories\UserRepository;
 use App\Services\UserService;
-use Illuminate\Http\Request;
+
 
 class UserController extends Controller
 {
 
-
-//    private UserService $userService;
-//    private UserRepository $userRepository;
-
-//    public function __construct(UserService $userService, UserRepository $userRepository)
-//    {
-//        $this->userService = $userService;
-//        $this->userRepository = $userRepository;
-
-//    }
-
 public function __construct(private UserService $userService){}
-
-
 
     /**
      * Display a listing of the resource.
@@ -84,7 +70,7 @@ public function __construct(private UserService $userService){}
         $validatedData = $request->validated();
         $this->userService->updateUserService($user, $validatedData);
 
-        return redirect()->route('users.index')->with('success', 'User successfully added');
+        return redirect()->route('users.index')->with('success', 'User successfully updated');
     }
 
     /**
