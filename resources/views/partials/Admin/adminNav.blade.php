@@ -24,7 +24,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('products')}}"
+                            <a href="{{route('products.index')}}"
                                class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-400 hover:bg-gray-800 hover:text-white
                                {{ request()->routeIs('products') ? 'bg-gray-800 text-white' : 'text-gray-400 hover:bg-gray-800 hover:text-white' }}">
                                 <svg class="size-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
