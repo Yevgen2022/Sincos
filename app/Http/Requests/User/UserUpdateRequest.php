@@ -11,7 +11,11 @@ class UserUpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',  // Increased maximum size to 255
-            'email' => 'required|email|unique:users,email,' . $this->route('id'),
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('users')->ignore($this->user), //Check for uniqueness only if the email changes
+            ],
             'job' => 'required|max:255',   // Increased maximum size to 255
             'role_id' => 'required|exists:roles,id',  // Checking if a role exists in the roles table
             'password' => 'nullable|min:8|confirmed', //  field `password` does not necessary
