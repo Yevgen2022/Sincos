@@ -22,12 +22,6 @@ class ProductsUserIndexController extends Controller
         $search = $request->input('search');
         $itemsPerPage = $search ? 4 : 12; // 4 for search, 12 for no search
 
-//    $products = Product::paginate(12);
-
-        // Якщо є запит, фільтруємо товари, інакше отримуємо всі
-//        $products = Product::when($search, function ($query, $search) {
-//            return $query->where('name', 'LIKE', "%{$search}%");
-//        })->paginate($itemsPerPage);
 
         $products = $this->productsService->searchProductsService($search, $itemsPerPage);
 

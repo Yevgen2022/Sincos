@@ -11,10 +11,10 @@ class CategoryUsersIndexController extends Controller
 {
     public function index()
     {
-// Отримати всі категорії
+// Get all categories
         $categories = Category::all();
 
-        // Ініціалізувати порожній список продуктів за замовчуванням
+        // Initialize an empty list of products by default
         $products = collect();
 
 
@@ -23,19 +23,19 @@ class CategoryUsersIndexController extends Controller
 
     public function filter(Request $request)
     {
-        // Перевірити, чи переданий categoryId
+        // Check if transmitted categoryId
         $categoryId = $request->get('categoryId');
         if (!$categoryId) {
             return redirect()->route('categoryforusers.index')->with('error', 'Category have not chosen.');
         }
 
-        // Отримати всі категорії
+        // Get all categories
         $categories = Category::all();
 
-        // Отримати продукти для вибраної категорії
+        // Get products for the selected category
         $products = Product::where('category_id', $categoryId)->get();
 
-        // Передати у вигляд
+        // Transmit into form
         return view('CategoryForUsers.index', compact('categories', 'products'));
     }
 
