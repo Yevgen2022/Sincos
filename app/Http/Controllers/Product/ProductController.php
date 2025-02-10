@@ -12,14 +12,9 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
 
-
-    private ProductService $productService;
-    private CategoryService $categoryService;
-
-    public function __construct(ProductService $productService, CategoryService $categoryService)
+    public function __construct(private ProductService $productService, private CategoryService $categoryService)
     {
-        $this->productService = $productService;
-        $this->categoryService = $categoryService;
+
     }
 
 

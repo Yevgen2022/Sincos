@@ -11,12 +11,9 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
 
-
-    private $categoryService;
-
-    public function __construct(CategoryService $categoryService)
+    public function __construct(private CategoryService $categoryService)
     {
-        $this->categoryService = $categoryService;
+
     }
 
     /**

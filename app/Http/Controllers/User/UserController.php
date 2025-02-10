@@ -11,15 +11,9 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-
-
-    private UserService $userService;
-    private UserRepository $userRepository;
-
-    public function __construct(UserService $userService, UserRepository $userRepository)
+    public function __construct(private UserService $userService)
     {
-        $this->userService = $userService;
-        $this->userRepository = $userRepository;
+
     }
 
 
