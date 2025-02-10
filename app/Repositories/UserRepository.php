@@ -1,63 +1,39 @@
 <?php
 
-namespace App\Services;
+namespace App\Repositories;
 
+use App\Models\Role;
 use App\Models\User;
-use App\Repositories\UserRepository;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
-class UserService
+class UserRepository
 {
 
-    private $userRepository;
-
-    public function __construct(UserRepository $userRepository)
+    public function getUsersPaginateRepository($number)
     {
-        $this->userRepository = $userRepository;
+        return User::paginate($number);
     }
 
-    public function getUsersPaginateService($number)
+    public function getRolesUserRepository()
     {
-        return $this->userRepository->getUsersPaginateRepository($number);
+        return Role::all();
     }
 
-    public function getRolesUserService()
+    public function storeUserRepository($data)
     {
-        return $this->userRepository->getRolesUserRepository();
+        return User::create($data);
     }
 
-    public function storeUserService(array $data)
-    {
-        $data['password'] = bcrypt('password'); // We set the default password Hashing the password before saving
-        $data['remember_token'] = Str::random(60);
-        $data['email_verified_at'] = now();
-
-        return $this->userRepository->storeUserRepository($data);
-
-    }
-    public function getUserByIdService($id){
-        return $this->userRepository->getUserByIdRepository($id);
+    public function getUserByIdRepository($id){
+        return User::findOrFail($id);
     }
 
-    public function updateUserService($user, array $data){
 
-        if (array_key_exists('password', $data) && !empty($data['password'])) {
-            $data['password'] = Hash::make($data['password']);
-        } else {
-            unset($data['password']); // We secure the code from errors
-        }
-        return $this->userRepository->updateUserRepository($user, $data);
+    public function updateUserRepository($user, $data){
+        return $user->update($data);
     }
 
-    public function checkIfAdminService(User $user): bool
-    {
-        return $user->role === 'admin';
-    }
 
-    public function deleteUserService(User $user): bool
-    {
-        return $this->userRepository->deleteUserRepository($user);
+    public function deleteUserRepository($user){
+        return $user->delete();
     }
-
 }
