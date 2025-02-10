@@ -20,7 +20,7 @@ class Category extends Model
 
     public function products(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(Product::class);  // Вказуємо, що одна категорія може мати багато товарів
+        return $this->hasMany(Product::class);  // Please note that one category can have many products
     }
 
 }
