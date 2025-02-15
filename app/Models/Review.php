@@ -37,13 +37,13 @@ class Review extends Model
 
     }
 
-// Додаємо метод для отримання кількості відгуків для продукту
+// Add a method to get the number of reviews for a product
     public static function countReviewsForProduct($productId)
     {
         return self::where('product_id', $productId)->count();
     }
 
-// Метод для отримання середнього рейтингу для продукту
+// A method for obtaining an average rating for a product
     public static function averageRatingForProduct($productId)
     {
         return self::where('product_id', $productId)->avg('user_rating');

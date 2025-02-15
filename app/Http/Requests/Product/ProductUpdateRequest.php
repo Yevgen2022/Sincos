@@ -11,10 +11,10 @@ class ProductUpdateRequest extends FormRequest
         return [
             'name' => 'required|string|max:100',
             'description' => 'required|string|max:500',
-            'category_id' => 'required|exists:categories,id', // Перевіряємо, що категорія існує
+            'category_id' => 'required|exists:categories,id', // We check that the category exists
             'price' => [
                 'required',
-                'regex:/^\d+([.,]\d{1,2})?$/' // Число з комою або крапкою, максимум 2 десяткових
+                'regex:/^\d+([.,]\d{1,2})?$/' // A number with a comma or period, up to 2 decimal places
             ],
         ];
     }

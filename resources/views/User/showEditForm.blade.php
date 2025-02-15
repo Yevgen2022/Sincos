@@ -5,8 +5,7 @@
         <div class="w-full max-w-4xl bg-white shadow-md rounded-lg p-6 mt-10">
             <h2 class="text-2xl font-semibold text-gray-800 text-center mb-6">Add User</h2>
 
-
-            <form action="{{ route('user.update', $user->id) }}" method="POST">
+            <form action="{{ route('users.update', $user->id) }}" method="POST">
                 @csrf
                 @method('PUT')
 
@@ -18,9 +17,6 @@
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
                 </div>
-
-
-
 
                 <div class="mb-2">
                     <label for="change_password" class="inline-flex items-center">
@@ -57,11 +53,18 @@
                     @enderror
                 </div>
 
-                <div class="mb-6">
+
+                <div class="mb-4">
                     <label for="user_role" class="block text-sm font-medium text-gray-700">User role</label>
-                    <input type="text" id="user_role" name="role" value="{{ old('role',$user->role)}}"
-                           class="mt-1 p-3 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                    @error('role')
+                    <select id="user_role" name="role_id" class="mt-1 p-3 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        <option value="">Select a role</option>
+                        @foreach($roles as $role)
+                            <option value="{{ $role->id }}" {{ old('role_id', $user->role_id) == $role->id ? 'selected' : '' }}>
+                                {{ $role->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('role_id')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
                 </div>
@@ -70,7 +73,7 @@
                     <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
                         Update
                     </button>
-                    <a href="{{ route('admin.user') }}"
+                    <a href="{{ route('users.index') }}"
                        class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400">
                         Cancel
                     </a>
@@ -82,16 +85,16 @@
 
     @section('scripts')
         <script>
-            // Отримуємо елементи
+            // We get elements
             const changePasswordCheckbox = document.getElementById('change_password');
             const passwordField = document.getElementById('password_field');
 
-            // Функція для управління відображенням поля пароля
+            // A function to control the display of the password field
             changePasswordCheckbox.addEventListener('change', function () {
                 if (this.checked) {
-                    passwordField.style.display = 'block'; // Покажемо поле пароля
+                    passwordField.style.display = 'block'; // Let's show the password field
                 } else {
-                    passwordField.style.display = 'none'; // Сховаємо поле пароля
+                    passwordField.style.display = 'none'; // Hide the password field
                 }
             });
         </script>

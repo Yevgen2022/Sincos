@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('job');
-            $table->string('role')->default('user');
+            $table->string('job')->nullable();
+            $table->foreignId('role_id')->default(2)->constrained('roles')->onDelete('cascade'); // Зовнішній ключ
             $table->rememberToken();
             $table->timestamps();
         });

@@ -10,6 +10,5 @@ class AdminIndexController extends Controller
 
     public function index(){
         return view('admin.index');
-//        return view('partials.Admin.admin');
     }
 }

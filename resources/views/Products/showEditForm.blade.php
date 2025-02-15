@@ -5,7 +5,7 @@
             <h2 class="text-2xl font-semibold text-gray-800 text-center mb-6">Edit Product</h2>
 
 
-            <form action="{{ route('product.update', $product->id) }}" method="POST">
+            <form action="{{ route('products.update', $product->id) }}" method="POST">
                 @csrf
                 @method('PUT')
 
@@ -67,7 +67,7 @@
                     <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
                         Update
                     </button>
-                    <a href="{{ route('products') }}"
+                    <a href="{{ route('products.index') }}"
                        class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400">
                         Cancel
                     </a>

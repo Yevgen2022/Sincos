@@ -8,11 +8,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class
+User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
 
-    use HasFactory, Notifiable; //SoftDeletes;
+    use HasFactory, Notifiable;
+
+    //SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -24,7 +27,7 @@ class User extends Authenticatable
         'email',
         'job',
         'password',
-        'role',
+        'role_id',
         'email_verified_at',  // Not necessary
         'remember_token',      // Not necessary
     ];
@@ -51,4 +54,16 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function isAdmin()
+    {
+        return $this->role_id === 1;
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+
 }

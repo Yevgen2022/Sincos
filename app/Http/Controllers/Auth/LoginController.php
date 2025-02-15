@@ -60,31 +60,31 @@ class LoginController extends Controller
          * were transmitted through the form, in particular email and password
          */
 
-        // Валідація форми
+        // Form validation
         $request->validate([
             'email' => 'required|email',
             'password' => 'required|string',
         ]);
 
-        // Знаходимо користувача за email
+        //We find a user by email
         $user = User::where('email', $request->email)->first();
 
-        // Перевіряємо існування користувача та правильність пароля
+        // We check the existence of the user and the correctness of the password
         if ($user && Hash::check($request->password, $user->password)) {
-            // Аутентифікуємо користувача
+            // We authenticate the user
             Auth::login($user);
 
-            // Перевірка ролі
-            if ($user->role === 'admin') {
+            // Role check
+            $role = $user->role;
+            if ($role && $role->name === 'Admin') {
                 return redirect()->route('admin.dashboard'); // Перенаправлення для адміністратора
-
             }
 
-            // Перенаправлення для звичайного користувача
+            // Redirection for a normal user
             return redirect()->route('homeUserPage');
         }
 
-        // Якщо аутентифікація не вдалася
+        // If authentication fails
         return back()->withErrors(['email' => 'The provided credentials are incorrect.']);
     }
 }
