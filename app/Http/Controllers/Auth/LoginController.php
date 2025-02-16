@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+
+
+use Illuminate\Support\Facades\Log;
+
 class LoginController extends Controller
 {
     /*
@@ -71,18 +75,18 @@ class LoginController extends Controller
 
         // We check the existence of the user and the correctness of the password
         if ($user && Hash::check($request->password, $user->password)) {
+
             // We authenticate the user
             Auth::login($user);
 
             // Role check
-            $role = $user->role;
-            if ($role && $role->name === 'Admin') {
-//                return redirect()->route('admin.dashboard'); // Redirection for admin
-                return redirect()->route('home');
+//            $role = $user->role;
+//            if ($user->role && $user->role->name === 'Admin') {
+            if ($user->role_id === 1) {
+                return redirect()->route('admin.dashboard'); // Redirection for admin
             }
 
-
-            // Redirection for a normal user
+            // Redirection for a user
             return redirect()->route('homeUserPage');
         }
 
