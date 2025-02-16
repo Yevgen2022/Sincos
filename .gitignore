@@ -8,9 +8,6 @@
 .phpunit.result.cache
 /.vscode
 
-# Composer vendor directory
-/vendor
-
 # Node.js modules
 /node_modules/
 
