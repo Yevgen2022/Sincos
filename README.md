@@ -1,8 +1,8 @@
-# 🛍️ Sincos — E-commerce Demo App  (Result)
+# Sincos — E-commerce Demo App  (Result)
 
 This is a full-stack demo project simulating an e-commerce platform, built with **Laravel** (backend) and **Tailwind CSS** (frontend).
 
-## ✨ Key Features
+## Key Features
 - Admin panel for product management (CRUD operations)
 - Product listing page with data loaded from DummyJSON API
 - Responsive design with Tailwind CSS
@@ -10,14 +10,14 @@ This is a full-stack demo project simulating an e-commerce platform, built with 
 - Dashboard for admins
 - Clean project structure and code organization
 
-## 🛠️ Tech Stack
+## Tech Stack
 - **Backend:** Laravel (PHP)
 - **Frontend:** Blade templates, Tailwind CSS 3
 - **External API:** DummyJSON (products data)
 - **Authentication:** Laravel Auth (simple starter auth)
 - **Version Control:** Git & GitHub
 
-## 🚀 How to Run Locally
+## How to Run Locally
 1. Clone the repository.
 2. Set up your local environment (PHP 8+, Composer, MySQL).
 3. Copy `.env.example` to `.env` and set database credentials.
@@ -28,7 +28,7 @@ This is a full-stack demo project simulating an e-commerce platform, built with 
 
 ---
 
-✅ This project demonstrates full cycle development:  
+This project demonstrates full cycle development:  
 Backend setup ➔ Frontend integration ➔ Responsive UI ➔ Admin features ➔ External API connection ➔ Authentication.
 
 ---
