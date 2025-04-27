@@ -5,25 +5,20 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
-//Route::get('/', function () {
-//    return view('home');
-//});
-
-
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
 
-Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
-//    Route::middleware(['admin'])->group(function () {
-        Route::resource('products', \App\Http\Controllers\Product\ProductController::class);
-        Route::resource('categories', \App\Http\Controllers\Category\CategoryController::class);
-        Route::resource('users', \App\Http\Controllers\User\UserController::class);
-        Route::get('/admin', [App\Http\Controllers\Admin\AdminIndexController::class, 'index'])->name('admin.dashboard');
-//    });
-});
+//Route::prefix('admin')->middleware(['admin'])->group(function () {
+//    Route::prefix('admin')->group(function () {
+    Route::resource('products', \App\Http\Controllers\Product\ProductController::class);
+    Route::resource('categories', \App\Http\Controllers\Category\CategoryController::class);
+    Route::resource('users', \App\Http\Controllers\User\UserController::class);
+    Route::get('admin', [App\Http\Controllers\Admin\AdminIndexController::class, 'index'])->name('admin.dashboard');
 
+//    });
+//});
 
 
 Route::middleware(['auth'])->group(function () {

@@ -31,8 +31,8 @@
             </div>
             <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div class="flex shrink-0 items-center">
-                    <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
-                         alt="Your Company">
+{{--                    <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"--}}
+{{--                         alt="Your Company">--}}
                 </div>
 
 
@@ -121,7 +121,7 @@
                         <div class="ml-3">
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                                <button class="text-white">Log out</button>
+                                <button class="hover:bg-gray-700 hover:text-gray-300 active:text-white text-white px-3 py-2 rounded-md text-sm font-medium">Log out</button>
                             </form>
                         </div>
                     @endauth
@@ -132,7 +132,7 @@
                             <div class="ml-3">
                                 <form method="GET" action="{{ route('admin.dashboard') }}">
                                     @csrf
-                                    <button class="text-white">Dashboard</button>
+                                    <button class="hover:bg-gray-700 hover:text-gray-300 active:text-white text-white px-3 py-2 rounded-md text-sm font-medium">Dashboard</button>
                                 </form>
                             </div>
                         @endif
